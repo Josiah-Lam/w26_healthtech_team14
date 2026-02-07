@@ -8,6 +8,9 @@ import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom';
 import './AppNavbar.scss';
 
+
+// added font size controls and language dropdown to navbar, with placeholder language selection (actual i18n not implemented yet)
+
 export default function AppNavbar() {
     const baseFontPx = useRef(16);
     const [scale, setScale] = useState(1);
