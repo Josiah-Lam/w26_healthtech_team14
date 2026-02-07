@@ -66,8 +66,7 @@ export default function AppNavbar() {
                         className="app-logo"
                         width="40"
                         height="40"
-                    />
-                
+                    />                
                     <span className="ms-2 navbar-title">HealthTech</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
