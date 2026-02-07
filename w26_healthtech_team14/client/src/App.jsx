@@ -1,19 +1,24 @@
-import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import { TodoListCard } from './components/TodoListCard';
-import { Greeting } from './components/Greeting';
+import { Routes, Route } from 'react-router-dom';
+import AppNavbar from './components/AppNavbar';
+import Home from './pages/Home';
+import PersonalRecords from './pages/PersonalRecords';
+import Referrals from './pages/Referrals';
+import Exercise from './pages/Exercise';
 
 function App() {
     return (
-        <Container>
-            <Row>
-                <Col md={{ offset: 3, span: 6 }}>
-                    <Greeting />
-                    <TodoListCard />
-                </Col>
-            </Row>
-        </Container>
+        <>
+            <AppNavbar />
+            <Container className="mt-4">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/personal-records" element={<PersonalRecords />} />
+                    <Route path="/referrals" element={<Referrals />} />
+                    <Route path="/exercise" element={<Exercise />} />
+                </Routes>
+            </Container>
+        </>
     );
 }
 
