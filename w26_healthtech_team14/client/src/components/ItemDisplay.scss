@@ -4,11 +4,11 @@
     margin-bottom: 15px;
     border: transparent;
     border-radius: 5px;
-    box-shadow: 0 0 1em #ccc;
+    box-shadow: 0 0 1em rgba(95, 163, 178, 0.2);
     transition: all 0.2s ease-in-out;
 
     &:hover {
-        box-shadow: 0 0 1em #aaa;
+        box-shadow: 0 0 1em rgba(120, 169, 165, 0.3);
     }
 
     &.completed {
@@ -17,7 +17,7 @@
 }
 
 .toggles {
-    color: black;
+    color: #5fa3b2;
 }
 
 .name {
@@ -29,5 +29,5 @@
 }
 
 button:focus {
-    border: 1px solid #333;
+    border: 1px solid #5fa3b2;
 }
