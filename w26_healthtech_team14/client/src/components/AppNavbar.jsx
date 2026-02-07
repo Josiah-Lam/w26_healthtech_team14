@@ -53,6 +53,9 @@ export default function AppNavbar() {
         navigate('/');
     }
 
+
+
+    
     return (
         <Navbar bg="light" expand="lg" className="app-navbar">
             <Container>
@@ -64,6 +67,7 @@ export default function AppNavbar() {
                         width="40"
                         height="40"
                     />
+                
                     <span className="ms-2 navbar-title">HealthTech</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
