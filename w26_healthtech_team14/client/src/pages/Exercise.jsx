@@ -1,4 +1,3 @@
-import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Card from 'react-bootstrap/Card';
 
@@ -22,7 +21,15 @@ export default function Exercise() {
                 'Slowly return to starting position while maintaining neutral postures.',
             ],
         },
-        { name: 'Chest Press On Bench' },
+        {
+            name: 'Chest Press On Bench',
+            instructions: [
+                'Lay on bench and ensure your feet are still firmly on the floor. If this position bothers your low back, place 1 or both feet on the bench.',
+                'Hold dumbbell at chest level slightly wider than shoulder width apart with palms facing forward and wrists in neutral position.',
+                'Press dumbbells straight up above the chest in an arcing motion so that dumbbells come together at the top of the movement.',
+                'Bend at the elbows to slowly lower dumbbells back to their starting position.',
+            ],
+        },
         {
             name: 'Leg Press',
             instructions: [
@@ -32,7 +39,16 @@ export default function Exercise() {
                 'Slowly return to the start position.',
             ],
         },
-        { name: 'Piston Pump Hammer Curl (DB)' },
+        {
+            name: 'Piston Pump Hammer Curl (DB)',
+            instructions: [
+                'Stand with feet hip-width apart, soft bend in the knee and weight on mid foot.',
+                'Hold dumbbells in straight arms with palms facing inward.',
+                'With one arm, hinge at elbow to curl the weight up to shoulder while keeping upper arm close to torso and wrists in neutral position. Ensure core is engaged to prevent any torso movement.',
+                'Lower dumbbell under control to return to the starting position while raising the other dumbbell up towards your shoulder. This will count as 1 rep.',
+                'Continue to raise/lower the dumbbells in alternating fashion for target repetitions.',
+            ],
+        },
     ];
 
     return (
