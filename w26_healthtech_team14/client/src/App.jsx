@@ -5,9 +5,6 @@ import Home from './pages/Home';
 import PersonalRecords from './pages/PersonalRecords';
 import Referrals from './pages/Referrals';
 import Exercise from './pages/Exercise';
-<<<<<<< HEAD
-import MyProgress from './pages/MyProgress';
-=======
 import Login from './pages/Login';
 import Forbidden from './pages/Forbidden';
 import SignUp from './pages/SignUp';
@@ -16,7 +13,6 @@ import Profile from './pages/Profile';
 import AuthProvider from './auth/AuthProvider';
 import RequireAuth from './auth/RequireAuth';
 import RequireRole from './auth/RequireRole';
->>>>>>> 9ea8cff (added auth feature)
 
 function App() {
     return (
@@ -32,12 +28,6 @@ function App() {
 
                     {/* Public/home route */}
                     <Route path="/" element={<Home />} />
-<<<<<<< HEAD
-                    <Route path="/personal-records" element={<PersonalRecords />} />
-                    <Route path="/referrals" element={<Referrals />} />
-                    <Route path="/exercise" element={<Exercise />} />
-                    <Route path="/my-progress" element={<MyProgress />} />
-=======
 
                     {/* Protected routes: require authentication */}
                     <Route
@@ -72,7 +62,6 @@ function App() {
                             </RequireAuth>
                         }
                     />
->>>>>>> 9ea8cff (added auth feature)
                 </Routes>
             </Container>
         </AuthProvider>
