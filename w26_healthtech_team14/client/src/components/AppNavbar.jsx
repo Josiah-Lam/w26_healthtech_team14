@@ -63,14 +63,13 @@ export default function AppNavbar() {
                         width="40"
                         height="40"
                     />
-                    <span className="ms-2 navbar-title">HealthTech</span>
+                    <span className="ms-2 navbar-title fst-italic">CCCARE ONE</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link} to="/personal-records">Personal Records</Nav.Link>
-                        <Nav.Link as={Link} to="/referrals">Referrals</Nav.Link>
                         <Nav.Link as={Link} to="/exercise">Exercise</Nav.Link>
                         <Nav.Link as={Link} to="/my-progress">My Progress</Nav.Link>
                     </Nav>
