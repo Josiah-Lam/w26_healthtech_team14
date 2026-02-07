@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../auth/AuthProvider';
+import { useAuth } from '../../auth/AuthProvider';
 
 export default function Login() {
     const { loginAs } = useAuth();

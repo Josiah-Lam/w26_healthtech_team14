@@ -4,14 +4,13 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
-import Container from 'react-bootstrap/Container';
 import Badge from 'react-bootstrap/Badge';
+import Container from 'react-bootstrap/Container';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './AppNavbar.scss';
 import { useAuth } from '../auth/AuthProvider';
-import { getNavigation } from '../config/roleConfig';
 
 
 // added font size controls and language dropdown to navbar, with placeholder language selection (actual i18n not implemented yet)
@@ -70,18 +69,20 @@ export default function AppNavbar() {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
-                        {/* Dynamic navigation based on user role */}
-                        {user && user.role && getNavigation(user.role).map((navItem) => (
-                            <Nav.Link key={navItem.path} as={Link} to={navItem.path}>
-                                {navItem.label}
-                            </Nav.Link>
-                        ))}
-                        {!user && (
-                            <>
-                                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            </>
-                        )}
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link} to="/personal-records">Personal Records</Nav.Link>
+                        <Nav.Link as={Link} to="/referrals">Referrals</Nav.Link>
+                        <Nav.Link as={Link} to="/exercise">Exercise</Nav.Link>
+                        <Nav.Link as={Link} to="/my-progress">My Progress</Nav.Link>
                     </Nav>
+
+                    {user && user.role && (
+                        <div className="mx-auto d-none d-lg-flex align-items-center nav-center-badges">
+                            <Badge bg="info" pill>
+                                {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
+                            </Badge>
+                        </div>
+                    )}
 
                     <div className="d-flex align-items-center">
                         <div className="font-controls me-3">
@@ -105,14 +106,7 @@ export default function AppNavbar() {
                             title={
                                 <span className="profile-toggle">
                                     {user ? (
-                                        <>
-                                            <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
-                                            {user.role && (
-                                                <Badge bg="info" className="ms-2 profile-role">
-                                                    {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
-                                                </Badge>
-                                            )}
-                                        </>
+                                        <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
                                     ) : (
                                         <FontAwesomeIcon icon={faUser} className="profile-icon" />
                                     )}
@@ -130,10 +124,6 @@ export default function AppNavbar() {
                             )}
                             {user && (
                                 <>
-                                    <NavDropdown.Item disabled>
-                                        <small className="text-muted">{user.email}</small>
-                                    </NavDropdown.Item>
-                                    <NavDropdown.Divider />
                                     <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
