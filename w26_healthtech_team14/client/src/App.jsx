@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import PersonalRecords from './pages/PersonalRecords';
 import Referrals from './pages/Referrals';
 import Exercise from './pages/Exercise';
+import MyProgress from './pages/MyProgress';
 import Login from './pages/Login';
 import Forbidden from './pages/Forbidden';
 import SignUp from './pages/SignUp';
@@ -28,6 +29,10 @@ function App() {
 
                     {/* Public/home route */}
                     <Route path="/" element={<Home />} />
+                    <Route path="/personal-records" element={<PersonalRecords />} />
+                    <Route path="/referrals" element={<Referrals />} />
+                    <Route path="/exercise" element={<Exercise />} />
+                    <Route path="/my-progress" element={<MyProgress />} />
 
                     {/* Protected routes: require authentication */}
                     <Route
