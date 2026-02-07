@@ -13,16 +13,13 @@ export const NAVIGATION_CONFIG = {
     [ROLES.PATIENT]: [
         { label: 'Home', path: '/', icon: 'home' },
         { label: 'Personal Records', path: '/patient/records', icon: 'file' },
-        { label: 'Referrals', path: '/patient/referrals', icon: 'share' },
-        { label: 'Exercise', path: '/patient/exercise', icon: 'running' },
-        { label: 'My Progress', path: '/patient/progress', icon: 'chart' }
+        { label: 'Exercise', path: '/patient/exercise', icon: 'running' }
     ],
     [ROLES.VOLUNTEER]: [
         { label: 'Dashboard', path: '/volunteer/dashboard', icon: 'dashboard' },
-        { label: 'Assigned Patients', path: '/volunteer/patients', icon: 'users' },
+        { label: 'Assigned Patient Progress', path: '/volunteer/patients', icon: 'users' },
         { label: 'Schedules', path: '/volunteer/schedules', icon: 'calendar' },
-        { label: 'My Assignments', path: '/volunteer/assignments', icon: 'tasks' },
-        { label: 'Progress Reports', path: '/volunteer/reports', icon: 'chart' }
+        { label: 'My Assignments', path: '/volunteer/assignments', icon: 'tasks' }
     ],
     [ROLES.ADMIN]: [
         { label: 'Dashboard', path: '/admin/dashboard', icon: 'dashboard' },

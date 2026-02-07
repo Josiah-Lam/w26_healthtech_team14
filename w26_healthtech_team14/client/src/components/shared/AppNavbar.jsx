@@ -10,8 +10,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './AppNavbar.scss';
-import { useAuth } from '../auth/AuthProvider';
-import { getNavigation } from '../config/roleConfig';
+import { useAuth } from '../../auth/AuthProvider';
+import { getNavigation } from '../../config/roleConfig';
 
 
 // added font size controls and language dropdown to navbar, with placeholder language selection (actual i18n not implemented yet)
@@ -65,7 +65,7 @@ export default function AppNavbar() {
                         width="40"
                         height="40"
                     />
-                    <span className="ms-2 navbar-title">HealthTech</span>
+                    <span className="ms-2 navbar-title fst-italic">CCCARE ONE</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
