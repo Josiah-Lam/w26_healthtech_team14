@@ -9,17 +9,10 @@ import MyProgress from './pages/MyProgress';
 
 function App() {
     return (
-        <AuthProvider>
+        <>
             <AppNavbar />
-            <Container className="pt-4">
+            <Container className="mt-4">
                 <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<SignUp />} />
-                    <Route path="/verify" element={<RequireAuth><VerifyAccount /></RequireAuth>} />
-                    <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-                    <Route path="/forbidden" element={<Forbidden />} />
-
-                    {/* Public/home route */}
                     <Route path="/" element={<Home />} />
                     <Route path="/personal-records" element={<PersonalRecords />} />
                     <Route path="/referrals" element={<Referrals />} />
@@ -27,7 +20,7 @@ function App() {
                     <Route path="/my-progress" element={<MyProgress />} />
                 </Routes>
             </Container>
-        </AuthProvider>
+        </>
     );
 }
 

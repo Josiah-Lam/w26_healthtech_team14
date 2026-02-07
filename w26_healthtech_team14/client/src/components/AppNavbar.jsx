@@ -5,11 +5,8 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Container from 'react-bootstrap/Container';
-import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 import './AppNavbar.scss';
-import { useAuth } from '../auth/AuthProvider';
 
 export default function AppNavbar() {
     const baseFontPx = useRef(16);
@@ -39,14 +36,6 @@ export default function AppNavbar() {
     function handleLanguageSelect(key) {
         setLanguage(key);
         // Placeholder: actual i18n not implemented yet
-    }
-
-    const { user, logout } = useAuth();
-    const navigate = useNavigate();
-
-    function handleLogout() {
-        logout();
-        navigate('/');
     }
 
     return (
@@ -88,35 +77,6 @@ export default function AppNavbar() {
                             <NavDropdown.Item eventKey="en">English</NavDropdown.Item>
                             <NavDropdown.Item eventKey="es">Spanish</NavDropdown.Item>
                             <NavDropdown.Item eventKey="fr">French</NavDropdown.Item>
-                        </NavDropdown>
-
-                        <NavDropdown
-                            title={
-                                <span className="profile-toggle">
-                                    {user ? (
-                                        <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
-                                    ) : (
-                                        <FontAwesomeIcon icon={faUser} className="profile-icon" />
-                                    )}
-                                </span>
-                            }
-                            id="account-dropdown"
-                            align="end"
-                            className="account-dropdown ms-2"
-                        >
-                            {!user && (
-                                <>
-                                    <NavDropdown.Item as={Link} to="/signup">Sign Up</NavDropdown.Item>
-                                    <NavDropdown.Item as={Link} to="/login">Log In</NavDropdown.Item>
-                                </>
-                            )}
-                            {user && (
-                                <>
-                                    <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item onClick={handleLogout}>Log Out</NavDropdown.Item>
-                                </>
-                            )}
                         </NavDropdown>
                     </div>
                 </Navbar.Collapse>
