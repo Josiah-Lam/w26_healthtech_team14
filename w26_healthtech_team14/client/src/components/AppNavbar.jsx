@@ -58,6 +58,7 @@ export default function AppNavbar() {
                         <Nav.Link as={Link} to="/personal-records">Personal Records</Nav.Link>
                         <Nav.Link as={Link} to="/referrals">Referrals</Nav.Link>
                         <Nav.Link as={Link} to="/exercise">Exercise</Nav.Link>
+                        <Nav.Link as={Link} to="/my-progress">My Progress</Nav.Link>
                     </Nav>
 
                     <div className="d-flex align-items-center">
