@@ -1,3 +1,8 @@
+.app-navbar {
+  margin: 0;
+  padding: 1rem 0;
+}
+
 .app-navbar .app-logo {
   border-radius: 6px;
   object-fit: cover;
@@ -14,6 +19,7 @@
 
 .language-dropdown {
   margin-left: 8px;
+  margin-right: 12px;
 }
 
 .font-control-group {
@@ -76,4 +82,32 @@
 .font-controls .btn {
   border-color: transparent;
   background-color: transparent;
+}
+
+/* Spread nav links evenly across the available space */
+/* (Reverted) nav-spread styles removed — default bootstrap alignment restored */
+
+/* Profile icon and toggle styles */
+.profile-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon {
+  font-size: 1rem;
+  color: #495057;
+}
+
+.profile-initial {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #c9d84e;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
 }
