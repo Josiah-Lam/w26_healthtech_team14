@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import PersonalRecords from './pages/PersonalRecords';
 import Referrals from './pages/Referrals';
 import Exercise from './pages/Exercise';
+import MyProgress from './pages/MyProgress';
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/personal-records" element={<PersonalRecords />} />
                     <Route path="/referrals" element={<Referrals />} />
                     <Route path="/exercise" element={<Exercise />} />
+                    <Route path="/my-progress" element={<MyProgress />} />
                 </Routes>
             </Container>
         </>
