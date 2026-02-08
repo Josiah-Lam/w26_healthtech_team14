@@ -24,7 +24,7 @@
         padding: 2.5rem;
         margin-bottom: 2rem;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        border-left: 5px solid #80bfc2;
+        border-left: 5px solid #00C2DE;
 
         .section-title {
             font-size: 1.5rem;
@@ -50,8 +50,8 @@
 
         .record-button {
             // Button styling as per design guidelines
-            background-color: #80bfc2;
-            color: #000000;
+            background-color: #00C2DE;
+            color: white;
             border: none;
             border-radius: 8px;
             padding: 0.75rem 1.25rem;
@@ -68,24 +68,24 @@
 
             // Accessibility and interaction states
             &:hover {
-                background-color: #6aa9ac;
+                background-color: #009CAB;
                 transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(128, 191, 194, 0.3);
+                box-shadow: 0 4px 12px rgba(0, 194, 222, 0.3);
             }
 
             &:active {
                 transform: translateY(0);
-                box-shadow: 0 2px 6px rgba(128, 191, 194, 0.2);
+                box-shadow: 0 2px 6px rgba(0, 194, 222, 0.2);
             }
 
             &:focus {
-                outline: 2px solid #80bfc2;
+                outline: 2px solid #00C2DE;
                 outline-offset: 2px;
             }
 
             // High contrast for accessibility
             &:focus-visible {
-                outline: 3px solid #000000;
+                outline: 3px solid #115E6B;
                 outline-offset: 3px;
             }
         }
@@ -182,7 +182,7 @@
                 background: #f8f9fa;
                 padding: 1rem;
                 border-radius: 6px;
-                border-left: 3px solid #80bfc2;
+                border-left: 3px solid #00C2DE;
             }
         }
     }
@@ -203,7 +203,7 @@
 
         .record-section {
             background: #ffffff;
-            border-left-color: #80bfc2;
+            border-left-color: #00C2DE;
 
             .section-title {
                 color: #000000;

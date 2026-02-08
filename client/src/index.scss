@@ -1,5 +1,20 @@
 @import 'bootstrap/scss/bootstrap';
 
+// New Color Palette
+:root {
+    --color-light-blue: #A4DBF7;
+    --color-cyan: #00C2DE;
+    --color-teal: #009CAB;
+    --color-dark-teal: #115E6B;
+    --color-light-gray: #f8f9fa;
+    --color-border: #e0e0e0;
+}
+
+// Override Bootstrap primary colors
+$primary: #00C2DE;
+$secondary: #009CAB;
+$info: #A4DBF7;
+
 html,
 body {
     margin: 0;
@@ -9,4 +24,21 @@ body {
 body {
     background-color: #f8f9fa;
     font-family: 'Lato';
+}
+
+// Override link colors
+a {
+    color: #00C2DE;
+
+    &:hover {
+        color: #009CAB;
+    }
+}
+
+.text-primary {
+    color: #00C2DE !important;
+}
+
+.text-secondary {
+    color: #009CAB !important;
 }
