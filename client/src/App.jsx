@@ -36,46 +36,46 @@ import Reports from './pages/coordinator/Reports';
 // Landing Page
 import CCCareLanding from './pages/CCCareLanding';
 
-// Layout wrapper for conditional navbar - must be inside Routes context
-function AppLayout({ children }) {
-    const location = useLocation();
-    // Hide navbar on verification, authentication pages, and login
-    const hideNavbarRoutes = ['/login', '/signup', '/verify', '/'];
-    const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
-
-    return (
-        <>
-            {shouldShowNavbar && <AppNavbar />}
-            <Container className="pt-4">
-                {children}
-            </Container>
-        </>
-    );
-}
-
 // // Layout wrapper for conditional navbar - must be inside Routes context
 // function AppLayout({ children }) {
 //     const location = useLocation();
-//     // Hide navbar on verification, authentication pages, and landing page
+//     // Hide navbar on verification, authentication pages, and login
 //     const hideNavbarRoutes = ['/login', '/signup', '/verify', '/'];
 //     const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
-    
-//     // Don't wrap landing page in Container
-//     const isLandingPage = location.pathname === '/';
 
 //     return (
 //         <>
 //             {shouldShowNavbar && <AppNavbar />}
-//             {isLandingPage ? (
-//                 children
-//             ) : (
-//                 <Container className="pt-4">
-//                     {children}
-//                 </Container>
-//             )}
+//             <Container className="pt-4">
+//                 {children}
+//             </Container>
 //         </>
 //     );
 // }
+
+// Layout wrapper for conditional navbar - must be inside Routes context
+function AppLayout({ children }) {
+    const location = useLocation();
+    // Hide navbar on verification, authentication pages, and landing page
+    const hideNavbarRoutes = ['/login', '/signup', '/verify', '/'];
+    const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+    
+    // Don't wrap landing page in Container
+    const isLandingPage = location.pathname === '/';
+
+    return (
+        <>
+            {shouldShowNavbar && <AppNavbar />}
+            {isLandingPage ? (
+                children
+            ) : (
+                <Container className="pt-4">
+                    {children}
+                </Container>
+            )}
+        </>
+    );
+}
 
 // Routes wrapper component - provides proper context for AppLayout
 function AppRoutes() {

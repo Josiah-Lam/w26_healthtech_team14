@@ -81,13 +81,20 @@ export default function CCCareLanding() {
         <div className="nav-container">
           <div className="nav-content">
             <div className="nav-brand">
-              <div className="brand-logo">
+              {/* <div className="brand-logo">
                 <span>C³</span>
               </div>
               <div className="brand-text">
                 <h1>CCCare</h1>
                 <p>University of Waterloo</p>
-              </div>
+              </div> */}
+              <img
+                        src="/logo-placeholder.png"
+                        alt="Logo"
+                        className="app-logo"
+                        width="230"
+                        height="40"
+                    />
             </div>
             
             <div className="nav-links desktop-only">
@@ -102,7 +109,7 @@ export default function CCCareLanding() {
               <a href="#programs">Programs</a>
               <a href="#research">Research</a>
               <a href="#about">About</a>
-              <button className="btn-primary" onClick={() => navigate('/signup')}>
+              <button className="btn-primary" onClick={() => navigate('/login')}>
                 Get Started
               </button>
             </div>

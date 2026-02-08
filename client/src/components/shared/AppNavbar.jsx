@@ -21,6 +21,20 @@ export default function AppNavbar() {
     const [scale, setScale] = useState(1);
     const [language, setLanguage] = useState('en');
 
+    const roleBadgeVariant = (role) => {
+    switch (role?.toLowerCase()) {
+        case 'patient':
+            return 'primary';   // blue
+        case 'volunteer':
+            return 'success';   // green
+        case 'admin':
+        case 'coordinator':
+            return 'danger';    // red
+        default:
+            return 'secondary'; // gray fallback
+    }
+};
+
     useEffect(() => {
         const root = document.documentElement;
         const computed = getComputedStyle(root).fontSize || '16px';
@@ -107,11 +121,6 @@ export default function AppNavbar() {
                                     {user ? (
                                         <>
                                             <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
-                                            {user.role && (
-                                                <Badge bg="info" className="ms-2 profile-role">
-                                                    {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
-                                                </Badge>
-                                            )}
                                         </>
                                     ) : (
                                         <FontAwesomeIcon icon={faUser} className="profile-icon" />
@@ -131,7 +140,13 @@ export default function AppNavbar() {
                             {user && (
                                 <>
                                     <NavDropdown.Item disabled>
-                                        <small className="text-muted">{user.email}</small>
+                                        <small className="text-muted">{user.email}
+                                            {user.role && (
+                                                <Badge bg="info" className="ms-2 profile-role">
+                                                    {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
+                                                </Badge>
+                                            )}
+                                        </small>
                                     </NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>
