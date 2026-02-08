@@ -18,6 +18,9 @@ export default function VolunteerSchedules() {
         { id: 5, participant: 'Charlie Davis', date: 'Feb 12, 2026', time: '3:00 PM', duration: '1 hour', status: 'scheduled' }
     ]);
 
+    const today = schedules.filter(s => s.date === 'Feb 10, 2026');
+    const upcoming = schedules.filter(s => s.date !== 'Feb 10, 2026');
+
     const getStatusBadge = (status) => {
         switch (status) {
             case 'scheduled':
@@ -30,6 +33,26 @@ export default function VolunteerSchedules() {
                 return <Badge bg="secondary">Unknown</Badge>;
         }
     };
+
+    const renderScheduleCards = (items) => (
+        <Row>
+            {items.map(schedule => (
+                <Col md={6} lg={4} key={schedule.id} className="mb-4">
+                    <Card className="h-100">
+                        <Card.Body>
+                            <Card.Title>{schedule.patient}</Card.Title>
+                            <Card.Text>
+                                <strong>Date:</strong> {schedule.date} <br />
+                                <strong>Time:</strong> {schedule.time} <br />
+                                <strong>Duration:</strong> {schedule.duration} <br />
+                                <strong>Status:</strong> {getStatusBadge(schedule.status)}
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            ))}
+        </Row>
+    );
 
     return (
         <Container className="pt-4">
