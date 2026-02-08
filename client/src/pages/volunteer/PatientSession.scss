@@ -1,263 +1,111 @@
 .session-content {
-    .hrm-section {
-        background: white;
+    padding: 20px;
+
+    .session-section {
+        margin-bottom: 30px;
+
+        .section-button {
+            font-weight: 500;
+        }
+
+        .table {
+            margin-top: 15px;
+            
+            thead {
+                background-color: #f8f9fa;
+            }
+
+            input {
+                border: 1px solid #dee2e6;
+
+                &:focus {
+                    border-color: #0d6efd;
+                    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+                }
+            }
+        }
+    }
+
+    .hr-display {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
         border-radius: 8px;
-        padding: 1.5rem;
-        border: 1px solid #e0e0e0;
-        margin-bottom: 2rem;
+        padding: 20px;
+        text-align: center;
+        margin: 15px 0;
+        min-width: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-        .session-timer-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            justify-content: space-between;
-            margin-top: 1rem;
+        .hr-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
 
-            .session-timer {
-                font-size: 2rem;
-                font-weight: 700;
-                color: #2c3e50;
-                font-family: 'Courier New', monospace;
-                background: #f8f9fa;
-                padding: 1rem 1.5rem;
-                border-radius: 8px;
-                min-width: 150px;
-                text-align: center;
-                border: 2px solid #e0e0e0;
+        .hr-value {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1;
+        }
+    }
+}
+
+.session-timer {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+
+    .timer-display {
+        font-size: 48px;
+        font-weight: bold;
+        font-family: 'Courier New', monospace;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .timer-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        button {
+            font-weight: 500;
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .session-content {
+        padding: 15px;
+
+        .hr-display {
+            padding: 15px;
+            min-width: 100px;
+
+            .hr-value {
+                font-size: 28px;
+            }
+        }
+
+        .session-timer {
+            padding: 15px;
+
+            .timer-display {
+                font-size: 36px;
             }
 
             .timer-buttons {
-                display: flex;
-                gap: 0.5rem;
-
-                button {
-                    white-space: nowrap;
-                    padding: 0.5rem 1rem;
-
-                    &:disabled {
-                        opacity: 0.5;
-                        cursor: not-allowed;
-                    }
-                }
+                flex-wrap: wrap;
             }
         }
-    }
-
-    // Accordion styling
-    .accordion {
-        .accordion-button {
-            font-weight: 600;
-            font-size: 1.05rem;
-            padding: 1rem 1.25rem;
-
-            &:not(.collapsed) {
-                background-color: #e8f4f8;
-                color: #2c3e50;
-            }
-
-            &:focus {
-                border-color: #80bfc2;
-                box-shadow: 0 0 0 0.25rem rgba(128, 191, 194, 0.25);
-            }
-        }
-
-        .accordion-body {
-            padding: 1.5rem;
-        }
-    }
-
-    // Table styling
-    table {
-        margin-bottom: 1rem;
-
-        thead {
-            background-color: #f8f9fa;
-
-            th {
-                font-weight: 700;
-                color: #2c3e50;
-                vertical-align: middle;
-                padding: 0.75rem;
-                border-color: #dee2e6;
-            }
-        }
-
-        tbody {
-            tr {
-                &:hover {
-                    background-color: #f8f9fa;
-                }
-
-                td {
-                    padding: 0.75rem;
-                    vertical-align: middle;
-                    border-color: #dee2e6;
-
-                    .form-control {
-                        border: 1px solid #ced4da;
-                        padding: 0.375rem 0.5rem;
-                        font-size: 0.875rem;
-
-                        &:focus {
-                            border-color: #80bfc2;
-                            box-shadow: 0 0 0 0.2rem rgba(128, 191, 194, 0.25);
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    // HR Display styling
-    .hr-display {
-        display: flex;
-        justify-content: center;
-        margin-top: 1.5rem;
-        animation: fadeIn 0.3s ease-in;
-
-        .hr-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 120px;
-            height: 120px;
-            border: 3px solid #80bfc2;
-            border-radius: 8px;
-            background: linear-gradient(135deg, #e8f4f8 0%, #f0fafb 100%);
-            box-shadow: 0 4px 12px rgba(128, 191, 194, 0.3);
-
-            .hr-label {
-                font-size: 0.875rem;
-                font-weight: 700;
-                color: #2c3e50;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-                margin-bottom: 0.5rem;
-            }
-
-            .hr-value {
-                font-size: 2.5rem;
-                font-weight: 700;
-                color: #20c997;
-                font-family: 'Courier New', monospace;
-                animation: pulse 2s ease-in-out infinite;
-            }
-        }
-    }
-
-    // Responsive design for tablets
-    @media (max-width: 768px) {
-        .hrm-section {
-            .session-timer-container {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 1rem;
-
-                .session-timer {
-                    font-size: 1.75rem;
-                    min-width: auto;
-                }
-
-                .timer-buttons {
-                    gap: 0.5rem;
-
-                    button {
-                        flex: 1;
-                        font-size: 0.9rem;
-                        padding: 0.5rem 0.75rem;
-                    }
-                }
-            }
-        }
-
-        table {
-            font-size: 0.85rem;
-
-            thead th,
-            tbody td {
-                padding: 0.5rem;
-            }
-
-            .form-control {
-                font-size: 0.8rem !important;
-            }
-        }
-    }
-
-    // Responsive design for mobile
-    @media (max-width: 576px) {
-        .hrm-section {
-            padding: 1rem;
-
-            .session-timer-container {
-                .session-timer {
-                    font-size: 1.5rem;
-                    padding: 0.75rem 1rem;
-                    min-width: auto;
-                }
-
-                .timer-buttons {
-                    width: 100%;
-
-                    button {
-                        flex: 1;
-                        font-size: 0.85rem;
-                        padding: 0.4rem 0.5rem;
-                    }
-                }
-            }
-        }
-
-        .accordion-button {
-            font-size: 1rem;
-            padding: 0.75rem 1rem;
-        }
-
-        table {
-            font-size: 0.75rem;
-
-            thead th,
-            tbody td {
-                padding: 0.4rem;
-            }
-
-            .form-control {
-                font-size: 0.75rem !important;
-                padding: 0.25rem 0.5rem !important;
-            }
-        }
-
-        .hr-display {
-            .hr-box {
-                width: 100px;
-                height: 100px;
-
-                .hr-value {
-                    font-size: 2rem;
-                }
-            }
-        }
-    }
-}
-
-// Animations
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.8;
     }
 }

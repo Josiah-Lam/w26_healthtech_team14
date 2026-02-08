@@ -19,7 +19,8 @@ export const NAVIGATION_CONFIG = {
         { label: 'Dashboard', path: '/volunteer/dashboard', icon: 'dashboard' },
         { label: 'Assigned Participant Progress', path: '/volunteer/patients', icon: 'users' },
         { label: 'Schedules', path: '/volunteer/schedules', icon: 'calendar' },
-        { label: 'My Assignments', path: '/volunteer/assignments', icon: 'tasks' }
+        { label: 'My Assignments', path: '/volunteer/assignments', icon: 'tasks' },
+        { label: 'Swap Shift', path: '/volunteer/swap-shift', icon: 'exchange' }
     ],
     [ROLES.COORDINATOR]: [
         { label: 'Dashboard', path: '/admin/dashboard', icon: 'dashboard' },

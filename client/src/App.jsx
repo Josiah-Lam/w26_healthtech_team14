@@ -22,6 +22,7 @@ import VolunteerDashboard from './pages/volunteer/VolunteerDashboard';
 import AssignedPatients from './pages/volunteer/AssignedPatients';
 import VolunteerSchedules from './pages/volunteer/VolunteerSchedules';
 import MyAssignments from './pages/volunteer/MyAssignments';
+import SwapShift from './pages/volunteer/SwapShift';
 import ProgressReports from './pages/volunteer/ProgressReports';
 import PatientSession from './pages/volunteer/PatientSession';
 
@@ -164,6 +165,16 @@ function AppRoutes() {
                         <RequireAuth>
                             <RequireRole allowed={['VOLUNTEER']}>
                                 <MyAssignments />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/volunteer/swap-shift"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <SwapShift />
                             </RequireRole>
                         </RequireAuth>
                     }
