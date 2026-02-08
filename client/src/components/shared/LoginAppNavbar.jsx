@@ -10,13 +10,13 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import './AppNavbar.scss';
-import { useAuth } from '../auth/AuthProvider';
-import { getNavigation } from '../config/roleConfig';
+import { useAuth } from '../../auth/AuthProvider';
+import { getNavigation } from '../../config/roleConfig';
 
 
 // added font size controls and language dropdown to navbar, with placeholder language selection (actual i18n not implemented yet)
 
-export default function AppNavbar() {
+export default function LoginAppNavbar() {
     const baseFontPx = useRef(16);
     const [scale, setScale] = useState(1);
     const [language, setLanguage] = useState('en');
@@ -59,28 +59,18 @@ export default function AppNavbar() {
             <Container>
                 <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
                     <img
-                        src="/logo-placeholder.svg"
+                        src="/logo-placeholder.png"
                         alt="Logo"
                         className="app-logo"
-                        width="40"
+                        width="230"
                         height="40"
                     />
-                    <span className="ms-2 navbar-title fst-italic">CCCARE ONE</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
+                    {/* ✅ Add this Nav component with me-auto to push items to the right */}
                     <Nav className="me-auto">
-                        {/* Dynamic navigation based on user role */}
-                        {user && user.role && getNavigation(user.role).map((navItem) => (
-                            <Nav.Link key={navItem.path} as={Link} to={navItem.path}>
-                                {navItem.label}
-                            </Nav.Link>
-                        ))}
-                        {!user && (
-                            <>
-                                <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            </>
-                        )}
+                        {/* Empty - just here to create space */}
                     </Nav>
 
                     <div className="d-flex align-items-center">

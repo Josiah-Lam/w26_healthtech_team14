@@ -5,12 +5,12 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAuth } from '../auth/AuthProvider';
 import { useCalendar } from '../context/CalendarContext';
-import { WelcomeHeader } from '../components/patient/WelcomeHeader';
-import { ProfileCard } from '../components/patient/ProfileCard';
-import { CalendarWidget } from '../components/patient/CalendarWidget';
-import { StreakTracker } from '../components/patient/StreakTracker';
-import { ScheduleSection } from '../components/patient/ScheduleSection';
-import { NotesSection } from '../components/patient/NotesSection';
+import { WelcomeHeader } from '../components/participants/WelcomeHeader';
+import { ProfileCard } from '../components/participants/ProfileCard';
+import { CalendarWidget } from '../components/participants/CalendarWidget';
+import { StreakTracker } from '../components/participants/StreakTracker';
+import { ScheduleSection } from '../components/participants/ScheduleSection';
+import { NotesSection } from '../components/participants/NotesSection';
 import './Home.scss';
 
 // Exercise data - shared with Exercise page
