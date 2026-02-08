@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useAuth } from '../auth/AuthProvider';
+import { useCalendar } from '../context/CalendarContext';
 import { WelcomeHeader } from '../components/patient/WelcomeHeader';
 import { ProfileCard } from '../components/patient/ProfileCard';
 import { CalendarWidget } from '../components/patient/CalendarWidget';
@@ -45,7 +47,9 @@ const EXERCISES_DATA = [
 ];
 
 export default function Home() {
+    const navigate = useNavigate();
     const { user } = useAuth();
+    const { currentMonth, highlightedDates } = useCalendar();
     const [userName, setUserName] = useState('User');
     const [nextWorkoutDate, setNextWorkoutDate] = useState('Tomorrow');
     const [streakCount, setStreakCount] = useState(10);
@@ -100,8 +104,9 @@ export default function Home() {
         // Here you would save notes to your backend
     };
 
-    const currentMonthDate = new Date(todayDate.getFullYear(), todayDate.getMonth());
-    const highlightedDates = [20, 21, 22, 23, 24, 25, 26, 27, 28]; // Example dates
+    const handleCalendarClick = () => {
+        navigate('/patient/calendar');
+    };
 
     return (
         <div className="home-page">
@@ -121,10 +126,17 @@ export default function Home() {
                             userName={userName}
                             nextWorkoutDate={nextWorkoutDate}
                         />
-                        <CalendarWidget
-                            currentMonth={currentMonthDate}
-                            highlightedDates={highlightedDates}
-                        />
+                        <div 
+                            className="calendar-widget-wrapper"
+                            onClick={handleCalendarClick}
+                            style={{ cursor: 'pointer' }}
+                            title="Click to view full calendar"
+                        >
+                            <CalendarWidget
+                                currentMonth={currentMonth}
+                                highlightedDates={highlightedDates}
+                            />
+                        </div>
                         <StreakTracker
                             streakCount={streakCount}
                             message="Keep up the amazing work! 💪"

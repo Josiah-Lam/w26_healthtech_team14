@@ -6,11 +6,13 @@ import SignUp from './pages/SignUp';
 import VerifyAccount from './pages/VerifyAccount';
 import Profile from './pages/Profile';
 import AuthProvider from './auth/AuthProvider';
+import { CalendarProvider } from './context/CalendarContext';
 import RequireAuth from './auth/RequireAuth';
 import RequireRole from './auth/RequireRole';
 
 // Participant Pages
 import Home from './pages/Home';
+import Calendar from './pages/Calendar';
 import PersonalRecords from './pages/PersonalRecords';
 import Exercise from './pages/Exercise';
 import MyProgress from './pages/MyProgress';
@@ -71,6 +73,16 @@ function AppRoutes() {
                         <RequireAuth>
                             <RequireRole allowed={['PARTICIPANT']}>
                                 <Home />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/patient/calendar"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['PARTICIPANT']}>
+                                <Calendar />
                             </RequireRole>
                         </RequireAuth>
                     }
@@ -240,7 +252,9 @@ function AppRoutes() {
 function App() {
     return (
         <AuthProvider>
-            <AppRoutes />
+            <CalendarProvider>
+                <AppRoutes />
+            </CalendarProvider>
         </AuthProvider>
     );
 }

@@ -1,53 +1,162 @@
 import React from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import './PersonalRecords.scss';
 
+/**
+ * PersonalRecords Component
+ * Displays user's personal, contact, and medical information
+ * with visually distinct buttons for accessibility
+ */
 export default function PersonalRecords() {
-    const sections = [
-        'Personal Information',
-        'Current Diagnoses',
-        'Medical History',
+    // Sample data - would be fetched from backend in production
+    const personalInfo = [
+        {
+            label: 'Name',
+            value: 'Denise Smith',
+            ariaLabel: 'First and last name'
+        },
+        {
+            label: 'Pronouns',
+            value: 'She/Her',
+            ariaLabel: 'Pronouns'
+        },
+        {
+            label: 'DOB',
+            value: '01/01/1953',
+            ariaLabel: 'Date of birth'
+        },
+        {
+            label: 'Age',
+            value: '73',
+            ariaLabel: 'Age'
+        },
+        {
+            label: 'Sex',
+            value: 'Female',
+            ariaLabel: 'Sex'
+        }
     ];
 
-    return (
-        <div>
-            <h2>Personal Records</h2>
+    const contactInfo = [
+        {
+            label: 'Contact Method',
+            value: 'Phone Number',
+            ariaLabel: 'Preferred contact method'
+        },
+        {
+            label: 'Contact Info',
+            value: '(123) 456-7890',
+            ariaLabel: 'Contact information'
+        },
+        {
+            label: 'Emergency Contact',
+            value: 'Daniel Smith (Grandson)',
+            ariaLabel: 'Emergency contact and relation'
+        },
+        {
+            label: 'Emergency Phone',
+            value: '(098) 765-4321',
+            ariaLabel: 'Emergency contact phone number'
+        }
+    ];
 
-            <ListGroup className="mt-4">
-                {sections.map((section, i) => (
-                    <ListGroup.Item key={i} className="py-3">
-                        <div className="fw-bold fs-5 mb-2">{section}</div>
+    const medicalHistory = [
+        {
+            label: 'Current Diagnoses',
+            value: 'Gastric Cancer, Gastroparesis, Intestinal Metaplasia',
+            ariaLabel: 'Current diagnoses'
+        },
+        {
+            label: 'Past Diagnoses',
+            value: 'Helicobacter pylori (H.pylori)',
+            ariaLabel: 'Past diagnoses'
+        },
+        {
+            label: 'Family History',
+            value: 'Gastric Cancer, Type 1 Diabetes, Leukemia, Hyperthyroidism, High Blood Pressure',
+            ariaLabel: 'Family history'
+        },
+        {
+            label: 'Medications/Supplements',
+            value: 'Lorazepam, Pantoprazole, Jamp-Fer, Ondansetron',
+            ariaLabel: 'Medications and supplements'
+        },
+        {
+            label: 'Allergies',
+            value: 'N/A',
+            ariaLabel: 'Allergies and sensitivities'
+        }
+    ];
 
-                        {section === 'Personal Information' && (
-                            <div className="d-flex flex-column">
-                                <div><span className="fw-bold">First & Last name:</span></div>
-                                <div><span className="fw-bold">Pronouns:</span></div>
-                                <div><span className="fw-bold">Date of Birth (DD/MM/YYYY):</span></div>
-                                <div><span className="fw-bold">Age:</span></div>
-                                <div><span className="fw-bold">Sex:</span></div>
-                            </div>
-                        )}
+    const RecordField = ({ label, value, ariaLabel }) => (
+        <div className="record-field">
+            <button
+                className="record-button"
+                aria-label={ariaLabel}
+                title={ariaLabel}
+            >
+                {label}
+            </button>
+            <div className="record-value">
+                {value}
+            </div>
+        </div>
+    );
 
-                        {section === 'Current Diagnoses' && (
-                            <div className="d-flex flex-column">
-                                <div><span className="fw-bold">Preferred Contact Method:</span></div>
-                                <div><span className="fw-bold">Contact Information:</span></div>
-                                <div><span className="fw-bold">Emergency Contact & Relation:</span></div>
-                                <div><span className="fw-bold">Emergency Contact Phone Number:</span></div>
-                            </div>
-                        )}
-
-                        {section === 'Medical History' && (
-                            <div className="d-flex flex-column">
-                                <div><span className="fw-bold">Current Diagnoses:</span></div>
-                                <div><span className="fw-bold">Past Diagnoses:</span></div>
-                                <div><span className="fw-bold">Family History:</span></div>
-                                <div><span className="fw-bold">Medications & Supplements:</span></div>
-                                <div><span className="fw-bold">Allergies/Sensitivities:</span></div>
-                            </div>
-                        )}
-                    </ListGroup.Item>
+    const RecordSection = ({ title, fields }) => (
+        <section className="record-section">
+            <h3 className="section-title">{title}</h3>
+            <div className="fields-container">
+                {fields.map((field, index) => (
+                    <RecordField
+                        key={index}
+                        label={field.label}
+                        value={field.value}
+                        ariaLabel={field.ariaLabel}
+                    />
                 ))}
-            </ListGroup>
+            </div>
+        </section>
+    );
+
+    return (
+        <div className="personal-records-page">
+            <Container>
+                {/* Page Header */}
+                <Row className="mb-5">
+                    <Col xs={12}>
+                        <h1 className="page-title">Personal Records</h1>
+                        <p className="page-subtitle">
+                            Your personal information, contact details, and medical history
+                        </p>
+                    </Col>
+                </Row>
+
+                {/* Content Sections */}
+                <Row>
+                    <Col xs={12} lg={10} xl={9} className="mx-auto">
+                        {/* Personal Information Section */}
+                        <RecordSection
+                            title="Personal Information"
+                            fields={personalInfo}
+                        />
+
+                        {/* Contact Information Section */}
+                        <RecordSection
+                            title="Contact Information"
+                            fields={contactInfo}
+                        />
+
+                        {/* Medical History Section */}
+                        <RecordSection
+                            title="Medical History"
+                            fields={medicalHistory}
+                        />
+                    </Col>
+                </Row>
+            </Container>
         </div>
     );
 }
