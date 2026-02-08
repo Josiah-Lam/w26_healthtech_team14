@@ -13,7 +13,7 @@ export default function RequireRole({ allowed = [], children }) {
     }
 
     if (!allowed.includes(user.role)) {
-        return <Navigate to="/forbidden" replace />;
+        return <Navigate to="/login" replace />;
     }
 
     return children;

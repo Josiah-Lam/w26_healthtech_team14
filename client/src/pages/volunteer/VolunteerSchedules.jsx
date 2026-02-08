@@ -13,11 +13,11 @@ import Badge from 'react-bootstrap/Badge';
  */
 export default function VolunteerSchedules() {
     const [schedules] = useState([
-        { id: 1, patient: 'John Doe', program: 'STEPS', date: 'Feb 10, 2026', time: '10:00 AM', duration: '1 hour', status: 'completed' },
-        { id: 2, patient: 'Jane Smith', program: 'STEPS', date: 'Feb 10, 2026', time: '2:00 PM', duration: '1 hours', status: 'completed' },
-        { id: 3, patient: 'Bob Johnson', program: 'Brain and Body', date: 'Feb 11, 2026', time: '9:00 AM', duration: '1 hour', status: 'scheduled' },
-        { id: 4, patient: 'Alice Brown', program: 'START-FIT', date: 'Feb 11, 2026', time: '11:00 AM', duration: '1 hour', status: 'scheduled' },
-        { id: 5, patient: 'Charlie Davis', program: 'START-FIT', date: 'Feb 12, 2026', time: '3:00 PM', duration: '1 hour', status: 'scheduled' }
+        { id: 1, participant: 'John Doe', program: 'STEPS', date: 'Feb 10, 2026', time: '10:00 AM', duration: '1 hour', status: 'completed' },
+        { id: 2, participant: 'Jane Smith', program: 'STEPS', date: 'Feb 10, 2026', time: '2:00 PM', duration: '1 hours', status: 'completed' },
+        { id: 3, participant: 'Bob Johnson', program: 'Brain and Body', date: 'Feb 11, 2026', time: '9:00 AM', duration: '1 hour', status: 'scheduled' },
+        { id: 4, participant: 'Alice Brown', program: 'START-FIT', date: 'Feb 11, 2026', time: '11:00 AM', duration: '1 hour', status: 'scheduled' },
+        { id: 5, participant: 'Charlie Davis', program: 'START-FIT', date: 'Feb 12, 2026', time: '3:00 PM', duration: '1 hour', status: 'scheduled' }
     ]);
 
     const today = schedules.filter(s => s.date === 'Feb 10, 2026');
@@ -43,7 +43,7 @@ export default function VolunteerSchedules() {
                         <Link to={`/volunteer/patient-session/${schedule.id}`} className="text-decoration-none text-reset">
                             <Card className="h-100">
                                 <Card.Body>
-                                    <Card.Title>{schedule.patient}</Card.Title>
+                                    <Card.Title>{schedule.participant}</Card.Title>
                                     <Card.Text>
                                         <strong>Program:</strong> {schedule.program} <br />
                                         <strong>Date:</strong> {schedule.date} <br />

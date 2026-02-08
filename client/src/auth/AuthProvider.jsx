@@ -9,10 +9,19 @@ export function useAuth() {
 // Mock client-side auth provider for scaffolding. Stores users in localStorage.
 export default function AuthProvider({ children }) {
     const [user, setUser] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const raw = localStorage.getItem('mock_user');
-        if (raw) setUser(JSON.parse(raw));
+        try {
+            const raw = localStorage.getItem('mock_user');
+            if (raw) {
+                setUser(JSON.parse(raw));
+            }
+        } catch (error) {
+            console.error('Error loading user from localStorage:', error);
+        } finally {
+            setIsLoading(false);
+        }
     }, []);
 
     function persistUser(u) {
@@ -20,7 +29,7 @@ export default function AuthProvider({ children }) {
         setUser(u);
     }
 
-    function signup({ email, role = 'Patient' }) {
+    function signup({ email, role = 'Participant' }) {
         // create a mock user record in local storage users pool
         const usersRaw = localStorage.getItem('mock_users');
         const users = usersRaw ? JSON.parse(usersRaw) : [];
@@ -50,8 +59,20 @@ export default function AuthProvider({ children }) {
 
     function loginAs(role) {
         // convenience for local testing
-        const mock = { id: `mock-${role}`, role: role.toUpperCase(), isVerified: true, email: `${role}@example.com` };
+        const mock = { id: `mock-${role}`, role: role.toUpperCase(), isVerified: false, email: `${role}@example.com` };
         persistUser(mock);
+    }
+
+    function loginWithEmail(email, role) {
+        // Create/update user with email and role during login flow
+        const mock = { 
+            id: `user-${Date.now()}`, 
+            role: role.toUpperCase(), 
+            isVerified: false, 
+            email 
+        };
+        persistUser(mock);
+        return mock;
     }
 
     function verifyCurrent() {
@@ -77,7 +98,11 @@ export default function AuthProvider({ children }) {
         setUser(null);
     }
 
-    const value = { user, signup, login, loginAs, verifyCurrent, logout };
+    const value = { user, isLoading, signup, login, loginAs, loginWithEmail, verifyCurrent, logout };
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
 
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
