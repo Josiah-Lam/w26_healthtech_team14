@@ -1,11 +1,26 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from 'react-bootstrap/Button';
 import './CCCareLanding.css';
 
 export default function CCCareLanding() {
+  const baseFontPx = useRef(16);
+  const [scale, setScale] = useState(1);
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const computed = getComputedStyle(root).fontSize || '16px';
+    const px = parseFloat(computed) || 16;
+    baseFontPx.current = px;
+    root.style.fontSize = `${px * scale}px`;
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.style.fontSize = `${baseFontPx.current * scale}px`;
+  }, [scale]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -84,6 +99,14 @@ export default function CCCareLanding() {
             </div>
             
             <div className="nav-links desktop-only">
+              <div className="font-controls">
+                <Button variant="" size="sm" onClick={decreaseFont} aria-label="Decrease font" >
+                  <span className="btn-a small">- A</span>
+                </Button>
+                <Button variant="" size="sm" onClick={increaseFont} aria-label="Increase font">
+                  <span className="btn-a large">A +</span>
+                </Button>
+              </div>
               <a href="#programs">Programs</a>
               <a href="#research">Research</a>
               <a href="#about">About</a>
@@ -106,6 +129,14 @@ export default function CCCareLanding() {
             <a href="#programs">Programs</a>
             <a href="#research">Research</a>
             <a href="#about">About</a>
+            <div className="font-controls mobile-font-controls">
+              <Button variant="outline-secondary" size="sm" onClick={decreaseFont} aria-label="Decrease font">
+                <span className="btn-a small">- A</span>
+              </Button>
+              <Button variant="outline-secondary" size="sm" onClick={increaseFont} aria-label="Increase font">
+                <span className="btn-a large">A +</span>
+              </Button>
+            </div>
             <button className="btn-primary" onClick={() => navigate('/signup')}>
               Get Started
             </button>
