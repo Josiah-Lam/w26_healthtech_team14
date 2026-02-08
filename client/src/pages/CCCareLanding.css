@@ -52,7 +52,7 @@
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #A4DBF7 0%, #00C2DE 100%);
+  /* background: linear-gradient(135deg, #A4DBF7 0%, #00C2DE 100%); */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,7 +196,7 @@
 .hero-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(164, 219, 247, 0.5) 0%, transparent 50%, rgba(0, 194, 222, 0.3) 100%);
+  /* background: linear-gradient(135deg, rgba(164, 219, 247, 0.5) 0%, transparent 50%, rgba(0, 194, 222, 0.3) 100%); */
   opacity: 0.5;
 }
 
@@ -214,7 +214,7 @@
 .hero-blob-1 {
   top: 80px;
   right: 40px;
-  background: #00C2DE;
+  /* background: #00C2DE; */
 }
 
 .hero-blob-2 {

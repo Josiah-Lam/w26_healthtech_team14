@@ -107,11 +107,6 @@ export default function AppNavbar() {
                                     {user ? (
                                         <>
                                             <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
-                                            {user.role && (
-                                                <Badge bg="info" className="ms-2 profile-role">
-                                                    {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
-                                                </Badge>
-                                            )}
                                         </>
                                     ) : (
                                         <FontAwesomeIcon icon={faUser} className="profile-icon" />
@@ -132,6 +127,11 @@ export default function AppNavbar() {
                                 <>
                                     <NavDropdown.Item disabled>
                                         <small className="text-muted">{user.email}</small>
+                                        {user.role && (
+                                                <Badge bg="info" className="ms-2 profile-role">
+                                                    {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
+                                                </Badge>
+                                            )}
                                     </NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>

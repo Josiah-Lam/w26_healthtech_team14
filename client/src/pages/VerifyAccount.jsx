@@ -22,7 +22,7 @@ export default function VerifyAccount() {
     }
 
     // Mock phone number - last 4 digits of email hash
-    const mockPhoneNumber = '+1 (***) ***-' + String(user.email).slice(-4).padStart(4, '*');
+    const mockPhoneNumber = '+1 (***) ***-****';
 
     function handleSubmit(e) {
         e.preventDefault();
