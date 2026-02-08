@@ -1,0 +1,238 @@
+.personal-records-page {
+    background: #ffffff;
+    min-height: calc(100vh - 100px);
+    padding: 2rem 0;
+
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #000000;
+        margin: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .page-subtitle {
+        font-size: 1.1rem;
+        color: #000000;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    .record-section {
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid #80bfc2;
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #000000;
+            margin: 0;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .fields-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1.75rem;
+        }
+    }
+
+    .record-field {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+
+        .record-button {
+            // Button styling as per design guidelines
+            background-color: #80bfc2;
+            color: #000000;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.25rem;
+            font-size: 0.95rem;
+            font-weight: 700;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: capitalize;
+            line-height: 1.4;
+            min-width: 140px;
+            text-align: center;
+            flex-shrink: 0;
+
+            // Accessibility and interaction states
+            &:hover {
+                background-color: #6aa9ac;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(128, 191, 194, 0.3);
+            }
+
+            &:active {
+                transform: translateY(0);
+                box-shadow: 0 2px 6px rgba(128, 191, 194, 0.2);
+            }
+
+            &:focus {
+                outline: 2px solid #80bfc2;
+                outline-offset: 2px;
+            }
+
+            // High contrast for accessibility
+            &:focus-visible {
+                outline: 3px solid #000000;
+                outline-offset: 3px;
+            }
+        }
+
+        .record-value {
+            font-size: 1rem;
+            color: #000000;
+            line-height: 1.6;
+            word-break: break-word;
+            padding-top: 0.75rem;
+        }
+    }
+
+    // Responsive design for tablets and smaller screens
+    @media (max-width: 768px) {
+        padding: 1.5rem 0;
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .record-section {
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+
+            .section-title {
+                font-size: 1.3rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .fields-container {
+                gap: 1.5rem;
+            }
+        }
+
+        .record-field {
+            gap: 1rem;
+
+            .record-button {
+                min-width: 120px;
+                padding: 0.65rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .record-value {
+                font-size: 0.9rem;
+                padding-top: 0.65rem;
+            }
+        }
+    }
+
+    // Responsive design for mobile devices
+    @media (max-width: 576px) {
+        padding: 1rem 0;
+
+        .page-title {
+            font-size: 1.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+        }
+
+        .record-section {
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+            border-left-width: 4px;
+
+            .section-title {
+                font-size: 1.1rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .fields-container {
+                gap: 1.25rem;
+            }
+        }
+
+        .record-field {
+            flex-direction: column;
+            gap: 0.75rem;
+
+            .record-button {
+                width: 100%;
+                min-width: unset;
+                padding: 0.85rem 1rem;
+                font-size: 0.95rem;
+            }
+
+            .record-value {
+                width: 100%;
+                padding: 0;
+                font-size: 0.95rem;
+                background: #f8f9fa;
+                padding: 1rem;
+                border-radius: 6px;
+                border-left: 3px solid #80bfc2;
+            }
+        }
+    }
+}
+
+// Dark mode support (optional)
+@media (prefers-color-scheme: dark) {
+    .personal-records-page {
+        background: #ffffff;
+
+        .page-title {
+            color: #000000;
+        }
+
+        .page-subtitle {
+            color: #000000;
+        }
+
+        .record-section {
+            background: #ffffff;
+            border-left-color: #80bfc2;
+
+            .section-title {
+                color: #000000;
+                border-bottom-color: #3e3e3e;
+            }
+        }
+
+        .record-field {
+            .record-value {
+                color: #000000;
+            }
+        }
+    }
+}
+
+// Print styles
+@media print {
+    .personal-records-page {
+        background: white;
+
+        .record-section {
+            page-break-inside: avoid;
+            box-shadow: none;
+            border: 1px solid #ddd;
+        }
+
+        .record-button {
+            print-color-adjust: exact;
+            -webkit-print-color-adjust: exact;
+        }
+    }
+}

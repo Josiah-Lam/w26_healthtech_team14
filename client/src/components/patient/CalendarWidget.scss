@@ -88,8 +88,75 @@
                     background: #20c997;
                     color: white;
                     font-weight: 700;
+
+                    &:hover {
+                        background: #1fa878;
+                    }
+                }
+
+                &.clickable {
+                    cursor: pointer;
+
+                    &:not(.empty):not(.highlighted):hover {
+                        background: #d4e9f7;
+                        box-shadow: 0 2px 6px rgba(32, 201, 151, 0.2);
+                    }
+
+                    &.highlighted:hover {
+                        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+                    }
                 }
             }
         }
     }
+
+    &.expanded-view {
+        padding: 2rem;
+
+        .calendar-header {
+            margin-bottom: 1.5rem;
+
+            .month-year {
+                font-size: 1.25rem;
+            }
+        }
+
+        .calendar-body {
+            .weekday-header {
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+
+                .weekday-name {
+                    font-size: 0.85rem;
+                }
+            }
+
+            .calendar-grid {
+                gap: 0.75rem;
+
+                .week {
+                    gap: 0.75rem;
+                }
+
+                .calendar-day {
+                    font-size: 0.95rem;
+                    font-weight: 600;
+                    border-radius: 10px;
+
+                    &.clickable:not(.empty):not(.highlighted):hover {
+                        background: #cce5f0;
+                        transform: scale(1.05);
+                        box-shadow: 0 4px 8px rgba(32, 201, 151, 0.3);
+                    }
+                }
+            }
+        }
+    }
+
+    &.mini-view {
+        .calendar-day.clickable:not(.empty):not(.highlighted):hover {
+            background: #d4e9f7;
+        }
+    }
 }
+
