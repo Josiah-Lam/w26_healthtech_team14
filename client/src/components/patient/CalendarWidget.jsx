@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
+import { useCalendar } from '../../context/CalendarContext';
 import './CalendarWidget.scss';
 
 /**
  * CalendarWidget Component
  * Displays a mini calendar for date navigation
+ * Synchronized with CalendarContext for data consistency
  */
-export function CalendarWidget({ currentMonth = new Date(), highlightedDates = [] }) {
+export function CalendarWidget({ 
+    currentMonth = new Date(), 
+    highlightedDates = [], 
+    onDateClick = null,
+    isExpandedView = false 
+}) {
+    const { highlightedDates: contextHighlightedDates } = useCalendar();
     const [displayMonth, setDisplayMonth] = useState(currentMonth);
+    
+    // Use context data if available, otherwise use props
+    const activeHighlightedDates = contextHighlightedDates.length > 0 ? contextHighlightedDates : highlightedDates;
 
     const daysInMonth = (date) => {
         return new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
@@ -29,6 +40,12 @@ export function CalendarWidget({ currentMonth = new Date(), highlightedDates = [
 
     const handleNextMonth = () => {
         setDisplayMonth(new Date(displayMonth.getFullYear(), displayMonth.getMonth() + 1));
+    };
+
+    const handleDateClick = (day) => {
+        if (day && onDateClick) {
+            onDateClick(day);
+        }
     };
 
     const getDays = () => {
@@ -56,7 +73,7 @@ export function CalendarWidget({ currentMonth = new Date(), highlightedDates = [
     }
 
     return (
-        <div className="calendar-widget">
+        <div className={`calendar-widget ${isExpandedView ? 'expanded-view' : 'mini-view'}`}>
             <div className="calendar-header">
                 <button className="nav-button" onClick={handlePrevMonth}>←</button>
                 <h4 className="month-year">
@@ -78,7 +95,8 @@ export function CalendarWidget({ currentMonth = new Date(), highlightedDates = [
                             {week.map((day, dayIdx) => (
                                 <div
                                     key={dayIdx}
-                                    className={`calendar-day ${!day ? 'empty' : ''} ${highlightedDates.includes(day) ? 'highlighted' : ''}`}
+                                    className={`calendar-day ${!day ? 'empty' : ''} ${activeHighlightedDates.includes(day) ? 'highlighted' : ''} ${onDateClick && day ? 'clickable' : ''}`}
+                                    onClick={() => handleDateClick(day)}
                                 >
                                     {day}
                                 </div>
