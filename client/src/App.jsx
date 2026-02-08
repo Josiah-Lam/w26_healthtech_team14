@@ -1,7 +1,6 @@
 import Container from 'react-bootstrap/Container';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import AppNavbar from './components/shared/AppNavbar';
-import Landing from './pages/Landing';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import VerifyAccount from './pages/VerifyAccount';
@@ -13,7 +12,6 @@ import RequireRole from './auth/RequireRole';
 // Participant Pages
 import Home from './pages/Home';
 import PersonalRecords from './pages/PersonalRecords';
-import Referrals from './pages/Referrals';
 import Exercise from './pages/Exercise';
 import MyProgress from './pages/MyProgress';
 
@@ -32,10 +30,10 @@ import SystemOverview from './pages/admin/SystemOverview';
 import Approvals from './pages/admin/Approvals';
 import Reports from './pages/admin/Reports';
 
-// Layout wrapper for conditional navbar
+// Layout wrapper for conditional navbar - must be inside Routes context
 function AppLayout({ children }) {
     const location = useLocation();
-    // Hide navbar on verification, authentication pages, and landing page
+    // Hide navbar on verification, authentication pages, and login
     const hideNavbarRoutes = ['/login', '/signup', '/verify', '/'];
     const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
 
@@ -49,137 +47,127 @@ function AppLayout({ children }) {
     );
 }
 
-function App() {
+// Routes wrapper component - provides proper context for AppLayout
+function AppRoutes() {
     return (
-        <AuthProvider>
-            <AppLayout>
-                <Routes>
-                    {/* Public Landing Page */}
-                    <Route path="/" element={<Landing />} />
+        <AppLayout>
+            <Routes>
+                {/* Root path - Login as initial page */}
+                <Route path="/" element={<Login />} />
 
-                    {/* Public Routes */}
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<SignUp />} />
+                {/* Public Routes */}
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<SignUp />} />
 
-                    {/* Protected Routes - Profile */}
-                    <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
-                    <Route path="/verify" element={<RequireAuth><VerifyAccount /></RequireAuth>} />
+                {/* Protected Routes - Profile */}
+                <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
+                <Route path="/verify" element={<RequireAuth><VerifyAccount /></RequireAuth>} />
 
-                    {/* PARTICIPANT ROUTES */}
-                    <Route
-                        path="/dashboard"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['PARTICIPANT']}>
-                                    <Home />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/patient/records"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['PARTICIPANT']}>
-                                    <PersonalRecords />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/patient/referrals"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['PARTICIPANT']}>
-                                    <Referrals />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/patient/exercise"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['PARTICIPANT']}>
-                                    <Exercise />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/patient/progress"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['PARTICIPANT']}>
-                                    <MyProgress />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
+                {/* PARTICIPANT ROUTES */}
+                <Route
+                    path="/dashboard"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['PARTICIPANT']}>
+                                <Home />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/patient/records"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['PARTICIPANT']}>
+                                <PersonalRecords />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/patient/exercise"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['PARTICIPANT']}>
+                                <Exercise />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/patient/progress"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['PARTICIPANT']}>
+                                <MyProgress />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
 
-                    {/* VOLUNTEER ROUTES */}
-                    <Route
-                        path="/volunteer/dashboard"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['VOLUNTEER']}>
-                                    <VolunteerDashboard />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/volunteer/patients"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['VOLUNTEER']}>
-                                    <AssignedPatients />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/volunteer/patient-session/:id"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['VOLUNTEER']}>
-                                    <PatientSession />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/volunteer/schedules"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['VOLUNTEER']}>
-                                    <VolunteerSchedules />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/volunteer/assignments"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['VOLUNTEER']}>
-                                    <MyAssignments />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
-                    <Route
-                        path="/volunteer/reports"
-                        element={
-                            <RequireAuth>
-                                <RequireRole allowed={['VOLUNTEER']}>
-                                    <ProgressReports />
-                                </RequireRole>
-                            </RequireAuth>
-                        }
-                    />
+                {/* VOLUNTEER ROUTES */}
+                <Route
+                    path="/volunteer/dashboard"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <VolunteerDashboard />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/volunteer/patients"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <AssignedPatients />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/volunteer/patient-session/:id"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <PatientSession />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/volunteer/schedules"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <VolunteerSchedules />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/volunteer/assignments"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <MyAssignments />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
+                <Route
+                    path="/volunteer/reports"
+                    element={
+                        <RequireAuth>
+                            <RequireRole allowed={['VOLUNTEER']}>
+                                <ProgressReports />
+                            </RequireRole>
+                        </RequireAuth>
+                    }
+                />
 
-                    {/* COORDINATOR ROUTES */}
+                {/* COORDINATOR ROUTES */}
                     <Route
                         path="/admin/dashboard"
                         element={
@@ -231,10 +219,17 @@ function App() {
                         }
                     />
 
-                    {/* Catch all - redirect to login */}
-                    <Route path="*" element={<Navigate to="/login" replace />} />
-                </Routes>
-            </AppLayout>
+                {/* Catch all - redirect to login */}
+                <Route path="*" element={<Navigate to="/login" replace />} />
+            </Routes>
+        </AppLayout>
+    );
+}
+
+function App() {
+    return (
+        <AuthProvider>
+            <AppRoutes />
         </AuthProvider>
     );
 }
