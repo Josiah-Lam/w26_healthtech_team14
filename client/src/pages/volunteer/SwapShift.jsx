@@ -76,10 +76,7 @@ export default function SwapShift() {
             <Row className="mb-4">
                 <Col xs={12}>
                     <div className="swap-shift-header">
-                        <h1>Swap Shift</h1>
-                        <p className="swap-shift-subtitle">
-                            View available shifts and request to swap with other volunteers
-                        </p>
+                        <h1>Available Shifts to Swap</h1>
                     </div>
                 </Col>
             </Row>
