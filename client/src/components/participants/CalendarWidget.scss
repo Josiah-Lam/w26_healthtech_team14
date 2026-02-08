@@ -14,7 +14,7 @@
         .month-year {
             font-size: 1rem;
             font-weight: 600;
-            color: #2c3e50;
+            color: #115E6B;
             margin: 0;
         }
 
@@ -23,12 +23,12 @@
             border: none;
             font-size: 1.25rem;
             cursor: pointer;
-            color: #20c997;
+            color: #00C2DE;
             padding: 0.25rem 0.5rem;
             transition: color 0.2s;
 
             &:hover {
-                color: #1fa878;
+                color: #009CAB;
             }
         }
     }
@@ -68,7 +68,7 @@
                 border-radius: 8px;
                 font-size: 0.875rem;
                 font-weight: 500;
-                color: #2c3e50;
+                color: #115E6B;
                 background: #f8f9fa;
                 cursor: pointer;
                 transition: all 0.2s;
@@ -85,12 +85,12 @@
                 }
 
                 &.highlighted {
-                    background: #20c997;
+                    background: #00C2DE;
                     color: white;
                     font-weight: 700;
 
                     &:hover {
-                        background: #1fa878;
+                        background: #009CAB;
                     }
                 }
 
@@ -98,8 +98,8 @@
                     cursor: pointer;
 
                     &:not(.empty):not(.highlighted):hover {
-                        background: #d4e9f7;
-                        box-shadow: 0 2px 6px rgba(32, 201, 151, 0.2);
+                        background: #A4DBF7;
+                        box-shadow: 0 2px 6px rgba(0, 194, 222, 0.2);
                     }
 
                     &.highlighted:hover {
@@ -144,9 +144,9 @@
                     border-radius: 10px;
 
                     &.clickable:not(.empty):not(.highlighted):hover {
-                        background: #cce5f0;
+                        background: #A4DBF7;
                         transform: scale(1.05);
-                        box-shadow: 0 4px 8px rgba(32, 201, 151, 0.3);
+                        box-shadow: 0 4px 8px rgba(0, 194, 222, 0.3);
                     }
                 }
             }

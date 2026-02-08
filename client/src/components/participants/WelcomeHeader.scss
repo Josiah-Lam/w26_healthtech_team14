@@ -4,9 +4,9 @@
     align-items: center;
     margin-bottom: 2rem;
     padding: 2rem;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e8f4f8 100%);
+    background: linear-gradient(135deg, #A4DBF7 0%, #00C2DE 100%);
     border-radius: 12px;
-    border: 1px solid #d1e7ed;
+    border: 1px solid #009CAB;
 
     .welcome-content {
         flex: 1;
@@ -14,13 +14,13 @@
         .welcome-message {
             font-size: 2rem;
             font-weight: 700;
-            color: #2c3e50;
+            color: white;
             margin: 0 0 0.5rem 0;
         }
 
         .welcome-subtitle {
             font-size: 1rem;
-            color: #7f8c8d;
+            color: white;
             margin: 0;
         }
     }

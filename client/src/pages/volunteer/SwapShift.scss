@@ -21,7 +21,7 @@
     background-color: #ffffff;
     border-radius: 12px;
     padding: 2.5rem;
-    border-left: 5px solid #667eea;
+    border-left: 5px solid #00C2DE;
 
     .swap-shift-table {
         margin-bottom: 2.5rem;
@@ -50,7 +50,7 @@
 
             thead {
                 .table-header {
-                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    background: linear-gradient(135deg, #00C2DE 0%, #009CAB 100%);
                     color: white;
 
                     th {
@@ -129,12 +129,12 @@
             }
 
             &:focus {
-                outline: 2px solid #667eea;
+                outline: 2px solid #00C2DE;
                 outline-offset: 2px;
             }
 
             &:focus-visible {
-                outline: 3px solid #667eea;
+                outline: 3px solid #00C2DE;
                 outline-offset: 3px;
             }
         }

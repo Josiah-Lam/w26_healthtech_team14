@@ -18,12 +18,12 @@
     .back-button {
       padding: 8px 20px;
       font-size: 1rem;
-      border-color: #6c757d;
-      color: #6c757d;
+      border-color: #00C2DE;
+      color: #00C2DE;
 
       &:hover {
-        background-color: #6c757d;
-        border-color: #6c757d;
+        background-color: #00C2DE;
+        border-color: #00C2DE;
         color: white;
       }
     }
@@ -87,13 +87,13 @@
 
           .event-item {
             background: #f8f9fa;
-            border-left: 4px solid #007bff;
+            border-left: 4px solid #00C2DE;
             padding: 12px 15px;
             border-radius: 4px;
             transition: all 0.2s ease;
 
             &:hover {
-              background: #e7f1ff;
+              background: #A4DBF7;
               box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             }
 
@@ -111,7 +111,7 @@
             }
 
             .event-time {
-              color: #007bff;
+              color: #00C2DE;
               font-size: 0.85rem;
               font-weight: 500;
             }
@@ -132,8 +132,8 @@
         display: flex;
         align-items: center;
         gap: 8px;
-        background: #d4edda;
-        color: #155724;
+        background: #A4DBF7;
+        color: #115E6B;
         padding: 10px 15px;
         border-radius: 4px;
         margin-top: 15px;
@@ -179,7 +179,7 @@
         .legend-event {
           width: 24px;
           height: 24px;
-          border: 2px solid #007bff;
+          border: 2px solid #00C2DE;
           border-radius: 3px;
         }
 
