@@ -24,7 +24,6 @@ export const NAVIGATION_CONFIG = {
     [ROLES.COORDINATOR]: [
         { label: 'Dashboard', path: '/admin/dashboard', icon: 'dashboard' },
         { label: 'User Management', path: '/admin/users', icon: 'users' },
-        { label: 'System Overview', path: '/admin/system', icon: 'settings' },
         { label: 'Approvals', path: '/admin/approvals', icon: 'check' },
         { label: 'Reports', path: '/admin/reports', icon: 'chart' }
     ]
