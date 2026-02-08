@@ -15,6 +15,14 @@ export default function CCCareLanding() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  function increaseFont() {
+    setScale((s) => Math.min(1.6, +(s + 0.1).toFixed(2)));
+    }
+
+  function decreaseFont() {
+    setScale((s) => Math.max(0.8, +(s - 0.1).toFixed(2)));
+    }
+
   const programs = [
     {
       icon: "❤️",
@@ -52,26 +60,34 @@ export default function CCCareLanding() {
   ];
 
   return (
+    <>
     <div className="cccare-landing">
       {/* Navigation */}
       <nav className={`cccare-nav ${scrolled ? 'scrolled' : ''}`}>
         <div className="nav-container">
           <div className="nav-content">
             <div className="nav-brand">
-              <div className="brand-logo">
-                <span>C³</span>
+              {/* <div className="brand-logo"> */}
+                {/* <span>C³</span>
               </div>
               <div className="brand-text">
                 <h1>CCCare</h1>
                 <p>University of Waterloo</p>
-              </div>
+              </div> */}
+              <img
+                src="/logo-placeholder.png"
+                alt="Logo"
+                className="app-logo"
+                width="230"
+                height="40"
+                    />
             </div>
             
             <div className="nav-links desktop-only">
               <a href="#programs">Programs</a>
               <a href="#research">Research</a>
               <a href="#about">About</a>
-              <button className="btn-primary" onClick={() => navigate('/signup')}>
+              <button className="btn-primary" onClick={() => navigate('/login')}>
                 Get Started
               </button>
             </div>
@@ -377,5 +393,6 @@ export default function CCCareLanding() {
         </div>
       </footer>
     </div>
+  </>
   );
 }
