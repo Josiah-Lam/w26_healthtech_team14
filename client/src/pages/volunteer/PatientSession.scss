@@ -1,0 +1,111 @@
+.session-content {
+    padding: 20px;
+
+    .session-section {
+        margin-bottom: 30px;
+
+        .section-button {
+            font-weight: 500;
+        }
+
+        .table {
+            margin-top: 15px;
+            
+            thead {
+                background-color: #f8f9fa;
+            }
+
+            input {
+                border: 1px solid #dee2e6;
+
+                &:focus {
+                    border-color: #0d6efd;
+                    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+                }
+            }
+        }
+    }
+
+    .hr-display {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        margin: 15px 0;
+        min-width: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+        .hr-label {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .hr-value {
+            font-size: 36px;
+            font-weight: bold;
+            line-height: 1;
+        }
+    }
+}
+
+.session-timer {
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+
+    .timer-display {
+        font-size: 48px;
+        font-weight: bold;
+        font-family: 'Courier New', monospace;
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .timer-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        button {
+            font-weight: 500;
+        }
+    }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+    .session-content {
+        padding: 15px;
+
+        .hr-display {
+            padding: 15px;
+            min-width: 100px;
+
+            .hr-value {
+                font-size: 28px;
+            }
+        }
+
+        .session-timer {
+            padding: 15px;
+
+            .timer-display {
+                font-size: 36px;
+            }
+
+            .timer-buttons {
+                flex-wrap: wrap;
+            }
+        }
+    }
+}

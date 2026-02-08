@@ -3,7 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 import { useAuth } from '../../auth/AuthProvider';
+import './VolunteerDashboard.scss';
 
 /**
  * Volunteer Dashboard
@@ -18,9 +20,47 @@ export default function VolunteerDashboard() {
         totalHours: 45.5
     });
 
+    // Recent Activity data organized by category
+    const recentActivity = {
+        upcomingActions: [
+            { id: 1, text: 'Reminder: STEPS session tomorrow at 1:00 PM', timestamp: '2 hours ago', icon: '📅' }
+        ],
+        exerciseLogSubmission: [
+            { id: 2, text: 'Submitted weekly exercise log for Maya Thompson – Feb 9, 2026', timestamp: '1 day ago', icon: '📝' }
+        ],
+        shiftParticipation: [
+            { id: 3, text: 'Attended Brain and Body session – Feb 10, 2026, 9:00 AM – 10:00 AM', timestamp: '2 days ago', icon: '✅' }
+        ],
+        swapShiftRequests: [
+            { id: 4, text: 'Requested swap for Feb 11, 2026 session – Pending Approval', timestamp: '3 days ago', icon: '🔄' }
+        ],
+        completedTasks: [
+            { id: 5, text: 'Marked STEPS session as complete – Feb 10, 2026', timestamp: '2 days ago', icon: '🏁' }
+        ]
+    };
+
     useEffect(() => {
         // Fetch volunteer stats from backend
     }, []);
+
+    const ActivitySection = ({ title, icon, activities, variant }) => (
+        <div className={`activity-section activity-section-${variant}`}>
+            <div className="section-header">
+                <span className="section-icon">{icon}</span>
+                <h6 className="section-title">{title}</h6>
+            </div>
+            <div className="activities-list">
+                {activities.map(activity => (
+                    <div key={activity.id} className="activity-item">
+                        <div className="activity-content">
+                            <p className="activity-text">{activity.text}</p>
+                            <small className="activity-timestamp">{activity.timestamp}</small>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
 
     return (
         <Container className="pt-4">
@@ -71,12 +111,43 @@ export default function VolunteerDashboard() {
 
             <Row className="mt-4">
                 <Col xs={12}>
-                    <Card>
+                    <Card className="recent-activity-card">
                         <Card.Header>
                             <Card.Title className="mb-0">Recent Activity</Card.Title>
                         </Card.Header>
                         <Card.Body>
-                            <p className="text-muted">No recent activity to display</p>
+                            <div className="activity-sections">
+                                <ActivitySection 
+                                    title="Upcoming Actions" 
+                                    icon="📅"
+                                    activities={recentActivity.upcomingActions}
+                                    variant="upcoming"
+                                />
+                                <ActivitySection 
+                                    title="Exercise Log Submission" 
+                                    icon="📝"
+                                    activities={recentActivity.exerciseLogSubmission}
+                                    variant="exercise"
+                                />
+                                <ActivitySection 
+                                    title="Shift Participation" 
+                                    icon="✅"
+                                    activities={recentActivity.shiftParticipation}
+                                    variant="participation"
+                                />
+                                <ActivitySection 
+                                    title="Swap Shift Requests" 
+                                    icon="🔄"
+                                    activities={recentActivity.swapShiftRequests}
+                                    variant="swap"
+                                />
+                                <ActivitySection 
+                                    title="Completed Tasks" 
+                                    icon="🏁"
+                                    activities={recentActivity.completedTasks}
+                                    variant="completed"
+                                />
+                            </div>
                         </Card.Body>
                     </Card>
                 </Col>
