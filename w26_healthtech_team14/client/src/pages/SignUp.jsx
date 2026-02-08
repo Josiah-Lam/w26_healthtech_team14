@@ -7,7 +7,7 @@ import { useAuth } from '../auth/AuthProvider';
 
 export default function SignUp() {
     const [email, setEmail] = useState('');
-    const [role, setRole] = useState('Patient');
+    const [role, setRole] = useState('Participant');
     const { signup } = useAuth();
     const navigate = useNavigate();
 
@@ -29,9 +29,9 @@ export default function SignUp() {
                 <Form.Group className="mb-3" controlId="role">
                     <Form.Label>Role</Form.Label>
                     <Form.Select value={role} onChange={(e) => setRole(e.target.value)}>
-                        <option>Patient</option>
+                        <option>Participant</option>
                         <option>Volunteer</option>
-                        <option>Admin</option>
+                        <option>Coordinator</option>
                     </Form.Select>
                 </Form.Group>
 

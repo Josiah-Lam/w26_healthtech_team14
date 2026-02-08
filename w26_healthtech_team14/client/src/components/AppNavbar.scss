@@ -117,3 +117,54 @@
   padding: 0.25rem 0.5rem;
   vertical-align: middle;
 }
+
+/* User email and badge container in dropdown */
+.user-email-badge-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Role badge styling in dropdown */
+.role-badge {
+  font-size: 0.65rem;
+  padding: 0.25rem 0.6rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Role badge colors for distinct role differentiation */
+.role-badge.bg-success {
+  background-color: #198754 !important;
+  color: #fff;
+}
+
+.role-badge.bg-info {
+  background-color: #0dcaf0 !important;
+  color: #000;
+}
+
+.role-badge.bg-danger {
+  background-color: #dc3545 !important;
+  color: #fff;
+}
+
+/* Responsive sizing for role badge */
+@media (max-width: 576px) {
+  .user-email-badge-container {
+    gap: 0.25rem;
+  }
+  
+  .role-badge {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .role-badge {
+    font-size: 0.7rem;
+    padding: 0.3rem 0.65rem;
+  }
+}

@@ -6,56 +6,17 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 
-/**
- * Assigned Patient Progress Page
- * Displays list of patients assigned to this volunteer and their progress reports
+/*
+ * Assigned Participants Page
+ * Displays list of participants assigned to this volunteer
  */
 export default function AssignedPatients() {
-    const [patients] = useState([
-        { id: 1, name: 'John Doe', status: 'active', lastSession: '2 days ago', program: 'STEPS' },
-        { id: 2, name: 'Jane Smith', status: 'active', lastSession: 'today', program: 'STEPS' },
-        { id: 3, name: 'Bob Johnson', status: 'inactive', lastSession: '1 week ago', program: 'Brain and Body' },
-        { id: 4, name: 'Alice Brown', status: 'active', lastSession: '3 days ago', program: 'START-FIT' },
-        { id: 5, name: 'Charlie Davis', status: 'active', lastSession: 'yesterday', program: 'START-FIT' }
-    ]);
-
-    const [reports] = useState([
-        {
-            id: 1,
-            patientName: 'John Doe',
-            period: 'Feb 1 - Feb 7, 2026',
-            completedSessions: 3,
-            totalSessions: 3,
-            averageProgress: 75,
-            notes: 'Good progress this week'
-        },
-        {
-            id: 2,
-            patientName: 'Jane Smith',
-            period: 'Feb 1 - Feb 7, 2026',
-            completedSessions: 2,
-            totalSessions: 4,
-            averageProgress: 90,
-            notes: 'Excellent progress and commitment'
-        },
-        {
-            id: 3,
-            patientName: 'Bob Johnson',
-            period: 'Feb 1 - Feb 7, 2026',
-            completedSessions: 1,
-            totalSessions: 3,
-            averageProgress: 45,
-            notes: 'Need to follow up on missed sessions'
-        },
-        {
-            id: 4,
-            patientName: 'Alice Brown',
-            period: 'Feb 1 - Feb 7, 2026',
-            completedSessions: 3,
-            totalSessions: 3,
-            averageProgress: 60,
-            notes: 'Steady progress, need encouragement'
-        }
+    const [participants, setParticipants] = useState([
+        { id: 1, name: 'John Doe', status: 'active', lastSession: '2 days ago', progress: 75 },
+        { id: 2, name: 'Jane Smith', status: 'active', lastSession: 'today', progress: 90 },
+        { id: 3, name: 'Bob Johnson', status: 'inactive', lastSession: '1 week ago', progress: 45 },
+        { id: 4, name: 'Alice Brown', status: 'active', lastSession: '3 days ago', progress: 60 },
+        { id: 5, name: 'Charlie Davis', status: 'active', lastSession: 'yesterday', progress: 85 }
     ]);
 
     const getStatusBadge = (status) => {
@@ -68,25 +29,35 @@ export default function AssignedPatients() {
 
     return (
         <Container className="pt-4">
-            <h1 className="mb-4">Assigned Patient Progress</h1>
+            <h1 className="mb-4">Assigned Participants</h1>
 
             <h3 className="mt-4 mb-3">Patient Overview</h3>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Patient Name</th>
+                        <th>Participant Name</th>
                         <th>Status</th>
                         <th>Last Session</th>
                         <th>Program</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {patients.map(patient => (
-                        <tr key={patient.id}>
-                            <td>{patient.name}</td>
-                            <td>{getStatusBadge(patient.status)}</td>
-                            <td>{patient.lastSession}</td>
-                            <td>{patient.program}</td>
+                    {participants.map(p => (
+                        <tr key={p.id}>
+                            <td>{p.name}</td>
+                            <td>{getStatusBadge(p.status)}</td>
+                            <td>{p.lastSession}</td>
+                            <td>
+                                <div className="progress" style={{ height: '20px' }}>
+                                    <div
+                                        className="progress-bar"
+                                        role="progressbar"
+                                        style={{ width: `${p.progress}%` }}
+                                    >
+                                        {p.progress}%
+                                    </div>
+                                </div>
+                            </td>
                         </tr>
                     ))}
                 </tbody>

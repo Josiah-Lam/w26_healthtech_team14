@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import AppNavbar from './components/shared/AppNavbar';
 import Login from './pages/Login';
+import Landing from './pages/Landing';
 import Forbidden from './pages/Forbidden';
 import SignUp from './pages/SignUp';
 import VerifyAccount from './pages/VerifyAccount';
@@ -45,6 +46,9 @@ function App() {
                     {/* Protected Routes - Profile */}
                     <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                     <Route path="/verify" element={<RequireAuth><VerifyAccount /></RequireAuth>} />
+
+                    {/* Public Landing */}
+                    <Route path="/landing" element={<Landing />} />
 
                     {/* PATIENT ROUTES */}
                     <Route

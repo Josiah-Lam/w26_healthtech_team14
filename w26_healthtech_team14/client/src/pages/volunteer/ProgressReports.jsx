@@ -6,13 +6,13 @@ import Card from 'react-bootstrap/Card';
 
 /**
  * Progress Reports Page
- * Displays progress reports for assigned patients
+ * Displays progress reports for assigned participants
  */
 export default function ProgressReports() {
     const [reports, setReports] = useState([
         {
             id: 1,
-            patientName: 'John Doe',
+            participantName: 'John Doe',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 3,
             totalSessions: 3,
@@ -21,7 +21,7 @@ export default function ProgressReports() {
         },
         {
             id: 2,
-            patientName: 'Jane Smith',
+            participantName: 'Jane Smith',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 4,
             totalSessions: 4,
@@ -30,7 +30,7 @@ export default function ProgressReports() {
         },
         {
             id: 3,
-            patientName: 'Bob Johnson',
+            participantName: 'Bob Johnson',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 1,
             totalSessions: 3,
@@ -39,7 +39,7 @@ export default function ProgressReports() {
         },
         {
             id: 4,
-            patientName: 'Alice Brown',
+            participantName: 'Alice Brown',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 3,
             totalSessions: 3,
@@ -57,7 +57,7 @@ export default function ProgressReports() {
                     <Col md={6} lg={4} key={report.id} className="mb-4">
                         <Card className="h-100">
                             <Card.Body>
-                                <Card.Title>{report.patientName}</Card.Title>
+                                <Card.Title>{report.participantName}</Card.Title>
                                 <small className="text-muted d-block mb-3">{report.period}</small>
 
                                 <Card.Text>

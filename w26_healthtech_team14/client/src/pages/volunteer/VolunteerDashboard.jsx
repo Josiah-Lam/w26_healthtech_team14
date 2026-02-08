@@ -12,7 +12,7 @@ import { useAuth } from '../../auth/AuthProvider';
 export default function VolunteerDashboard() {
     const { user } = useAuth();
     const [stats, setStats] = useState({
-        assignedPatients: 5,
+        assignedParticipants: 5,
         completedSessions: 23,
         upcomingSessions: 3,
         totalHours: 45.5
@@ -35,8 +35,8 @@ export default function VolunteerDashboard() {
                 <Col md={6} lg={3} className="mb-4">
                     <Card className="stat-card">
                         <Card.Body>
-                            <h5 className="text-muted">Assigned Patients</h5>
-                            <h2 className="text-primary">{stats.assignedPatients}</h2>
+                            <h5 className="text-muted">Assigned Participants</h5>
+                            <h2 className="text-primary">{stats.assignedParticipants}</h2>
                         </Card.Body>
                     </Card>
                 </Col>
