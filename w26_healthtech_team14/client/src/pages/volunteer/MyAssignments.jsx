@@ -12,7 +12,7 @@ export default function MyAssignments() {
         {
             id: 1,
             title: 'Follow up with John Doe',
-            patient: 'John Doe',
+            participant: 'John Doe',
             dueDate: 'Feb 10, 2026',
             priority: 'high',
             status: 'pending'
@@ -20,7 +20,7 @@ export default function MyAssignments() {
         {
             id: 2,
             title: 'Review exercise progress - Jane Smith',
-            patient: 'Jane Smith',
+            participant: 'Jane Smith',
             dueDate: 'Feb 11, 2026',
             priority: 'medium',
             status: 'in-progress'
@@ -28,7 +28,7 @@ export default function MyAssignments() {
         {
             id: 3,
             title: 'Schedule next session - Bob Johnson',
-            patient: 'Bob Johnson',
+            participant: 'Bob Johnson',
             dueDate: 'Feb 12, 2026',
             priority: 'medium',
             status: 'pending'
@@ -36,15 +36,15 @@ export default function MyAssignments() {
         {
             id: 4,
             title: 'Submit weekly report',
-            patient: 'General',
+            participant: 'General',
             dueDate: 'Feb 13, 2026',
             priority: 'high',
             status: 'pending'
         },
         {
             id: 5,
-            title: 'Complete patient assessment - Alice Brown',
-            patient: 'Alice Brown',
+            title: 'Complete participant assessment - Alice Brown',
+            participant: 'Alice Brown',
             dueDate: 'Feb 9, 2026',
             priority: 'high',
             status: 'completed'
@@ -88,7 +88,7 @@ export default function MyAssignments() {
                             <div className="flex-grow-1">
                                 <h5 className="mb-1">{assignment.title}</h5>
                                 <p className="mb-2 text-muted">
-                                    <strong>Patient:</strong> {assignment.patient} | <strong>Due:</strong> {assignment.dueDate}
+                                    <strong>Participant:</strong> {assignment.participant} | <strong>Due:</strong> {assignment.dueDate}
                                 </p>
                             </div>
                             <div className="ms-3">

@@ -54,10 +54,46 @@ export default function AppNavbar() {
         navigate('/');
     }
 
+    function getRoleBadgeVariant() {
+        if (!user || !user.role) return 'secondary';
+        const role = user.role.toLowerCase();
+        switch (role) {
+            case 'patient':
+                return 'success';
+            case 'volunteer':
+                return 'info';
+            case 'admin':
+                return 'danger';
+            default:
+                return 'secondary';
+        }
+    }
+
+    function getRoleDisplayName() {
+        if (!user || !user.role) return '';
+        const role = user.role.toLowerCase();
+        switch (role) {
+            case 'patient':
+                return 'Participant';
+            case 'admin':
+                return 'Coordinator';
+            case 'volunteer':
+                return 'Volunteer';
+            default:
+                return user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase();
+        }
+    }
+
+    function getLandingPagePath() {
+        if (!user || !user.role) return '/';
+        const navigation = getNavigation(user.role);
+        return navigation.length > 0 ? navigation[0].path : '/';
+    }
+
     return (
         <Navbar bg="light" expand="lg" className="app-navbar">
             <Container>
-                <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
+                <Navbar.Brand as={Link} to={getLandingPagePath()} className="d-flex align-items-center">
                     <img
                         src="/logo-placeholder.svg"
                         alt="Logo"
@@ -65,7 +101,7 @@ export default function AppNavbar() {
                         width="40"
                         height="40"
                     />
-                    <span className="ms-2 navbar-title">HealthTech</span>
+                    <span className="ms-2 navbar-title">CCCARE ONE</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -105,14 +141,7 @@ export default function AppNavbar() {
                             title={
                                 <span className="profile-toggle">
                                     {user ? (
-                                        <>
-                                            <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
-                                            {user.role && (
-                                                <Badge bg="info" className="ms-2 profile-role">
-                                                    {user.role.charAt(0).toUpperCase() + user.role.slice(1).toLowerCase()}
-                                                </Badge>
-                                            )}
-                                        </>
+                                        <span className="profile-initial">{(user.email || 'U').charAt(0).toUpperCase()}</span>
                                     ) : (
                                         <FontAwesomeIcon icon={faUser} className="profile-icon" />
                                     )}
@@ -131,7 +160,14 @@ export default function AppNavbar() {
                             {user && (
                                 <>
                                     <NavDropdown.Item disabled>
-                                        <small className="text-muted">{user.email}</small>
+                                        <div className="user-email-badge-container">
+                                            <small className="text-muted">{user.email}</small>
+                                            {user.role && (
+                                                <Badge bg={getRoleBadgeVariant()} pill className="role-badge">
+                                                    {getRoleDisplayName()}
+                                                </Badge>
+                                            )}
+                                        </div>
                                     </NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item as={Link} to="/profile">Profile</NavDropdown.Item>

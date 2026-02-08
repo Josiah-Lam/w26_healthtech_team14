@@ -25,7 +25,7 @@ export default function Approvals() {
             type: 'Role Change',
             requester: 'Sarah Johnson',
             email: 'sarah@example.com',
-            role: 'Patient -> Volunteer',
+            role: 'Participant -> Volunteer',
             submittedDate: '2026-02-05',
             details: 'User requested to become a volunteer'
         },
@@ -34,7 +34,7 @@ export default function Approvals() {
             type: 'Account Upgrade',
             requester: 'Tom Brown',
             email: 'tom@example.com',
-            role: 'Patient',
+            role: 'Participant',
             submittedDate: '2026-02-04',
             details: 'Request for premium features'
         },
@@ -43,16 +43,16 @@ export default function Approvals() {
             type: 'Account Registration',
             requester: 'Emma Davis',
             email: 'emma@example.com',
-            role: 'Patient',
+            role: 'Participant',
             submittedDate: '2026-02-03',
-            details: 'New patient registration'
+            details: 'New participant registration'
         },
         {
             id: 5,
             type: 'Data Export',
             requester: 'Robert Wilson',
             email: 'robert@example.com',
-            role: 'Patient',
+            role: 'Participant',
             submittedDate: '2026-02-02',
             details: 'User requested to export personal data'
         }

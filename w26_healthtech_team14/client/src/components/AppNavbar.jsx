@@ -67,7 +67,7 @@ export default function AppNavbar() {
                         width="40"
                         height="40"
                     />                
-                    <span className="ms-2 navbar-title">HealthTech</span>
+                    <span className="ms-2 navbar-title">CCCARE ONE</span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

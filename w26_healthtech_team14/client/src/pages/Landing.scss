@@ -1,0 +1,86 @@
+.landing-page {
+  --uw-gold: #ffd100;
+  --uw-black: #000;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  background: #fff;
+  padding: 0.25rem 0.5rem;
+  z-index: 9999;
+}
+
+.landing-header .mega-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+}
+.landing-header .brand {
+  font-weight: 700;
+  color: var(--uw-black);
+}
+.landing-header .uw-brand {
+  color: var(--uw-gold);
+  font-weight: 600;
+  margin-left: 0.5rem;
+}
+.mega-links {
+  display: flex;
+  gap: 2rem;
+}
+.mega-col h6 {
+  margin-bottom: 0.25rem;
+}
+
+.hero .carousel-item img {
+  max-height: 420px;
+  object-fit: cover;
+}
+.hero .carousel-caption h3 {
+  background: rgba(0,0,0,0.5);
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+}
+
+.main-content .lead {
+  color: #333;
+}
+
+.featured-news img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.role-callout {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.landing-footer {
+  border-top: 1px solid #e9e9e9;
+}
+
+/* Sidebar */
+.sidebar-col .quick-actions .list-group-item {
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .mega-links { display: none; }
+  .landing-header .nav-actions { margin-top: 0.5rem; }
+}

@@ -3,12 +3,12 @@ import Container from 'react-bootstrap/Container';
 import Table from 'react-bootstrap/Table';
 import Badge from 'react-bootstrap/Badge';
 
-/**
- * Assigned Patients Page
- * Displays list of patients assigned to this volunteer
+/*
+ * Assigned Participants Page
+ * Displays list of participants assigned to this volunteer
  */
 export default function AssignedPatients() {
-    const [patients, setPatients] = useState([
+    const [participants, setParticipants] = useState([
         { id: 1, name: 'John Doe', status: 'active', lastSession: '2 days ago', progress: 75 },
         { id: 2, name: 'Jane Smith', status: 'active', lastSession: 'today', progress: 90 },
         { id: 3, name: 'Bob Johnson', status: 'inactive', lastSession: '1 week ago', progress: 45 },
@@ -26,31 +26,31 @@ export default function AssignedPatients() {
 
     return (
         <Container className="pt-4">
-            <h1 className="mb-4">Assigned Patients</h1>
+            <h1 className="mb-4">Assigned Participants</h1>
 
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Patient Name</th>
+                        <th>Participant Name</th>
                         <th>Status</th>
                         <th>Last Session</th>
                         <th>Progress</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {patients.map(patient => (
-                        <tr key={patient.id}>
-                            <td>{patient.name}</td>
-                            <td>{getStatusBadge(patient.status)}</td>
-                            <td>{patient.lastSession}</td>
+                    {participants.map(p => (
+                        <tr key={p.id}>
+                            <td>{p.name}</td>
+                            <td>{getStatusBadge(p.status)}</td>
+                            <td>{p.lastSession}</td>
                             <td>
                                 <div className="progress" style={{ height: '20px' }}>
                                     <div
                                         className="progress-bar"
                                         role="progressbar"
-                                        style={{ width: `${patient.progress}%` }}
+                                        style={{ width: `${p.progress}%` }}
                                     >
-                                        {patient.progress}%
+                                        {p.progress}%
                                     </div>
                                 </div>
                             </td>

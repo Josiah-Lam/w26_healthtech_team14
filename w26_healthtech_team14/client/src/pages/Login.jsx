@@ -20,8 +20,8 @@ export default function Login() {
             <h2>Mock Login</h2>
             <p>Pick a role to sign in for local testing (client-side only).</p>
             <div className="d-flex gap-2">
-                <Button onClick={() => handleLogin('PATIENT')}>Sign in as Patient</Button>
-                <Button onClick={() => handleLogin('ADMIN')}>Sign in as Admin</Button>
+                <Button onClick={() => handleLogin('PATIENT')}>Sign in as Participant</Button>
+                <Button onClick={() => handleLogin('ADMIN')}>Sign in as Coordinator</Button>
                 <Button onClick={() => handleLogin('VOLUNTEER')}>Sign in as Volunteer</Button>
             </div>
         </Container>
