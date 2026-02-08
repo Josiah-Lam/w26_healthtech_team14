@@ -26,11 +26,14 @@ import ProgressReports from './pages/volunteer/ProgressReports';
 import PatientSession from './pages/volunteer/PatientSession';
 
 // Coordinator Pages
-import AdminDashboard from './pages/admin/AdminDashboard';
-import UserManagement from './pages/admin/UserManagement';
-import SystemOverview from './pages/admin/SystemOverview';
-import Approvals from './pages/admin/Approvals';
-import Reports from './pages/admin/Reports';
+import AdminDashboard from './pages/coordinator/AdminDashboard';
+import UserManagement from './pages/coordinator/UserManagement';
+import SystemOverview from './pages/coordinator/SystemOverview';
+import Approvals from './pages/coordinator/Approvals';
+import Reports from './pages/coordinator/Reports';
+
+// Landing Page
+import CCCareLanding from './pages/CCCareLanding';
 
 // Layout wrapper for conditional navbar - must be inside Routes context
 function AppLayout({ children }) {
@@ -49,13 +52,37 @@ function AppLayout({ children }) {
     );
 }
 
+// // Layout wrapper for conditional navbar - must be inside Routes context
+// function AppLayout({ children }) {
+//     const location = useLocation();
+//     // Hide navbar on verification, authentication pages, and landing page
+//     const hideNavbarRoutes = ['/login', '/signup', '/verify', '/'];
+//     const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+    
+//     // Don't wrap landing page in Container
+//     const isLandingPage = location.pathname === '/';
+
+//     return (
+//         <>
+//             {shouldShowNavbar && <AppNavbar />}
+//             {isLandingPage ? (
+//                 children
+//             ) : (
+//                 <Container className="pt-4">
+//                     {children}
+//                 </Container>
+//             )}
+//         </>
+//     );
+// }
+
 // Routes wrapper component - provides proper context for AppLayout
 function AppRoutes() {
     return (
         <AppLayout>
             <Routes>
                 {/* Root path - Login as initial page */}
-                <Route path="/" element={<Login />} />
+                <Route path="/" element={<CCCareLanding />} />
 
                 {/* Public Routes */}
                 <Route path="/login" element={<Login />} />

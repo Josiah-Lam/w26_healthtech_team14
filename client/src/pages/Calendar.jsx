@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import { useAuth } from '../auth/AuthProvider';
 import { useCalendar } from '../context/CalendarContext';
-import { CalendarWidget } from '../components/patient/CalendarWidget';
+import { CalendarWidget } from '../components/participants/CalendarWidget';
 import './Calendar.scss';
 
 /**

@@ -59,13 +59,13 @@ export default function AppNavbar() {
             <Container>
                 <Navbar.Brand as={Link} to="/" className="d-flex align-items-center">
                     <img
-                        src="/logo-placeholder.svg"
+                        src="/logo-placeholder.png"
                         alt="Logo"
                         className="app-logo"
-                        width="40"
+                        width="230"
                         height="40"
                     />
-                    <span className="ms-2 navbar-title fst-italic">CCCARE ONE</span>
+                    {/* <span className="ms-2 navbar-title fst-italic">CCCARE ONE</span> */}
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

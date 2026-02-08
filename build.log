@@ -1,0 +1,87 @@
+#1 [internal] load local bake definitions
+#1 reading from stdin 587B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 3.13kB done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:22
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.0s
+
+#5 [base 1/2] FROM docker.io/library/node:22@sha256:379c51ac7bbf9bffe16769cfda3eb027d59d9c66ac314383da3fcf71b46d026c
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 5.42kB 0.0s done
+#6 DONE 0.0s
+
+#7 [base 2/2] WORKDIR /usr/local/app
+#7 CACHED
+
+#8 [client-base 1/5] COPY client/package.json client/package-lock.json ./
+#8 CACHED
+
+#9 [client-base 2/5] RUN npm install
+#9 1.308 npm error code ERESOLVE
+#9 1.312 npm error ERESOLVE unable to resolve dependency tree
+#9 1.312 npm error
+#9 1.312 npm error While resolving: client@0.0.0
+#9 1.312 npm error Found: react@19.2.4
+#9 1.312 npm error node_modules/react
+#9 1.312 npm error   react@"^19.1.0" from the root project
+#9 1.312 npm error
+#9 1.312 npm error Could not resolve dependency:
+#9 1.312 npm error peer react@"^16.5.1 || ^17.0.0 || ^18.0.0" from lucide-react@0.263.1
+#9 1.312 npm error node_modules/lucide-react
+#9 1.312 npm error   lucide-react@"^0.263.1" from the root project
+#9 1.312 npm error
+#9 1.312 npm error Fix the upstream dependency conflict, or retry
+#9 1.312 npm error this command with --force or --legacy-peer-deps
+#9 1.312 npm error to accept an incorrect (and potentially broken) dependency resolution.
+#9 1.312 npm error
+#9 1.312 npm error
+#9 1.312 npm error For a full report see:
+#9 1.312 npm error /root/.npm/_logs/2026-02-08T16_43_43_682Z-eresolve-report.txt
+#9 1.312 npm notice
+#9 1.312 npm notice New major version of npm available! 10.9.4 -> 11.9.0
+#9 1.312 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.9.0
+#9 1.312 npm notice To update run: npm install -g npm@11.9.0
+#9 1.312 npm notice
+#9 1.314 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-02-08T16_43_43_682Z-debug-0.log
+#9 ERROR: process "/bin/sh -c npm install" did not complete successfully: exit code: 1
+------
+ > [client-base 2/5] RUN npm install:
+1.312 npm error
+1.312 npm error
+1.312 npm error For a full report see:
+1.312 npm error /root/.npm/_logs/2026-02-08T16_43_43_682Z-eresolve-report.txt
+1.312 npm notice
+1.312 npm notice New major version of npm available! 10.9.4 -> 11.9.0
+1.312 npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.9.0
+1.312 npm notice To update run: npm install -g npm@11.9.0
+1.312 npm notice
+1.314 npm error A complete log of this run can be found in: /root/.npm/_logs/2026-02-08T16_43_43_682Z-debug-0.log
+------
+Dockerfile:20
+
+--------------------
+
+  18 |     FROM base AS client-base
+
+  19 |     COPY client/package.json client/package-lock.json ./
+
+  20 | >>> RUN npm install
+
+  21 |     COPY client/.eslintrc.cjs client/index.html client/vite.config.js ./
+
+  22 |     COPY client/public ./public
+
+--------------------
+
+failed to solve: process "/bin/sh -c npm install" did not complete successfully: exit code: 1
+
