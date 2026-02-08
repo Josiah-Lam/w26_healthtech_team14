@@ -28,8 +28,8 @@ export default function Reports() {
         },
         {
             id: 3,
-            name: 'Patient Progress Report',
-            description: 'Aggregate patient progress and outcomes',
+            name: 'Participant Progress Report',
+            description: 'Aggregate participant progress and outcomes',
             generatedDate: '2026-02-07',
             period: 'January 2026'
         },
@@ -45,7 +45,7 @@ export default function Reports() {
     const [reportTypes] = useState([
         { type: 'User Activity', frequency: 'Monthly' },
         { type: 'Volunteer Performance', frequency: 'Weekly' },
-        { type: 'Patient Progress', frequency: 'Monthly' },
+        { type: 'Participant Progress', frequency: 'Monthly' },
         { type: 'System Performance', frequency: 'Daily' },
         { type: 'Financial Summary', frequency: 'Monthly' }
     ]);

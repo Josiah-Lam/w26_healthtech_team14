@@ -7,11 +7,11 @@ import Card from 'react-bootstrap/Card';
 import Badge from 'react-bootstrap/Badge';
 
 /**
- * Assigned Patient Progress Page
- * Displays list of patients assigned to this volunteer and their progress reports
+ * Assigned Participant Progress Page
+ * Displays list of participants assigned to this volunteer and their progress reports
  */
 export default function AssignedPatients() {
-    const [patients] = useState([
+    const [participants] = useState([
         { id: 1, name: 'John Doe', status: 'active', lastSession: '2 days ago', program: 'STEPS' },
         { id: 2, name: 'Jane Smith', status: 'active', lastSession: 'today', program: 'STEPS' },
         { id: 3, name: 'Bob Johnson', status: 'inactive', lastSession: '1 week ago', program: 'Brain and Body' },
@@ -22,7 +22,7 @@ export default function AssignedPatients() {
     const [reports] = useState([
         {
             id: 1,
-            patientName: 'John Doe',
+            participantName: 'John Doe',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 3,
             totalSessions: 3,
@@ -31,7 +31,7 @@ export default function AssignedPatients() {
         },
         {
             id: 2,
-            patientName: 'Jane Smith',
+            participantName: 'Jane Smith',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 2,
             totalSessions: 4,
@@ -40,7 +40,7 @@ export default function AssignedPatients() {
         },
         {
             id: 3,
-            patientName: 'Bob Johnson',
+            participantName: 'Bob Johnson',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 1,
             totalSessions: 3,
@@ -49,7 +49,7 @@ export default function AssignedPatients() {
         },
         {
             id: 4,
-            patientName: 'Alice Brown',
+            participantName: 'Alice Brown',
             period: 'Feb 1 - Feb 7, 2026',
             completedSessions: 3,
             totalSessions: 3,
@@ -68,25 +68,25 @@ export default function AssignedPatients() {
 
     return (
         <Container className="pt-4">
-            <h1 className="mb-4">Assigned Patient Progress</h1>
+            <h1 className="mb-4">Assigned Participant Progress</h1>
 
-            <h3 className="mt-4 mb-3">Patient Overview</h3>
+            <h3 className="mt-4 mb-3">Participant Overview</h3>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Patient Name</th>
+                        <th>Participant Name</th>
                         <th>Status</th>
                         <th>Last Session</th>
                         <th>Program</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {patients.map(patient => (
-                        <tr key={patient.id}>
-                            <td>{patient.name}</td>
-                            <td>{getStatusBadge(patient.status)}</td>
-                            <td>{patient.lastSession}</td>
-                            <td>{patient.program}</td>
+                    {participants.map(participant => (
+                        <tr key={participant.id}>
+                            <td>{participant.name}</td>
+                            <td>{getStatusBadge(participant.status)}</td>
+                            <td>{participant.lastSession}</td>
+                            <td>{participant.program}</td>
                         </tr>
                     ))}
                 </tbody>
@@ -98,7 +98,7 @@ export default function AssignedPatients() {
                     <Col md={6} lg={4} key={report.id} className="mb-4">
                         <Card className="h-100">
                             <Card.Body>
-                                <Card.Title>{report.patientName}</Card.Title>
+                                <Card.Title>{report.participantName}</Card.Title>
                                 <small className="text-muted d-block mb-3">{report.period}</small>
 
                                 <Card.Text>

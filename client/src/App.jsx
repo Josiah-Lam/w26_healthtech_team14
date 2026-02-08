@@ -1,8 +1,8 @@
 import Container from 'react-bootstrap/Container';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import AppNavbar from './components/shared/AppNavbar';
+import Landing from './pages/Landing';
 import Login from './pages/Login';
-import Forbidden from './pages/Forbidden';
 import SignUp from './pages/SignUp';
 import VerifyAccount from './pages/VerifyAccount';
 import Profile from './pages/Profile';
@@ -10,7 +10,7 @@ import AuthProvider from './auth/AuthProvider';
 import RequireAuth from './auth/RequireAuth';
 import RequireRole from './auth/RequireRole';
 
-// Patient Pages
+// Participant Pages
 import Home from './pages/Home';
 import PersonalRecords from './pages/PersonalRecords';
 import Referrals from './pages/Referrals';
@@ -25,34 +25,52 @@ import MyAssignments from './pages/volunteer/MyAssignments';
 import ProgressReports from './pages/volunteer/ProgressReports';
 import PatientSession from './pages/volunteer/PatientSession';
 
-// Admin Pages
+// Coordinator Pages
 import AdminDashboard from './pages/admin/AdminDashboard';
 import UserManagement from './pages/admin/UserManagement';
 import SystemOverview from './pages/admin/SystemOverview';
 import Approvals from './pages/admin/Approvals';
 import Reports from './pages/admin/Reports';
 
+// Layout wrapper for conditional navbar
+function AppLayout({ children }) {
+    const location = useLocation();
+    // Hide navbar on verification, authentication pages, and landing page
+    const hideNavbarRoutes = ['/login', '/signup', '/verify', '/'];
+    const shouldShowNavbar = !hideNavbarRoutes.includes(location.pathname);
+
+    return (
+        <>
+            {shouldShowNavbar && <AppNavbar />}
+            <Container className="pt-4">
+                {children}
+            </Container>
+        </>
+    );
+}
+
 function App() {
     return (
         <AuthProvider>
-            <AppNavbar />
-            <Container className="pt-4">
+            <AppLayout>
                 <Routes>
+                    {/* Public Landing Page */}
+                    <Route path="/" element={<Landing />} />
+
                     {/* Public Routes */}
                     <Route path="/login" element={<Login />} />
                     <Route path="/signup" element={<SignUp />} />
-                    <Route path="/forbidden" element={<Forbidden />} />
 
                     {/* Protected Routes - Profile */}
                     <Route path="/profile" element={<RequireAuth><Profile /></RequireAuth>} />
                     <Route path="/verify" element={<RequireAuth><VerifyAccount /></RequireAuth>} />
 
-                    {/* PATIENT ROUTES */}
+                    {/* PARTICIPANT ROUTES */}
                     <Route
-                        path="/"
+                        path="/dashboard"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['PATIENT']}>
+                                <RequireRole allowed={['PARTICIPANT']}>
                                     <Home />
                                 </RequireRole>
                             </RequireAuth>
@@ -62,7 +80,7 @@ function App() {
                         path="/patient/records"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['PATIENT']}>
+                                <RequireRole allowed={['PARTICIPANT']}>
                                     <PersonalRecords />
                                 </RequireRole>
                             </RequireAuth>
@@ -72,7 +90,7 @@ function App() {
                         path="/patient/referrals"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['PATIENT']}>
+                                <RequireRole allowed={['PARTICIPANT']}>
                                     <Referrals />
                                 </RequireRole>
                             </RequireAuth>
@@ -82,7 +100,7 @@ function App() {
                         path="/patient/exercise"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['PATIENT']}>
+                                <RequireRole allowed={['PARTICIPANT']}>
                                     <Exercise />
                                 </RequireRole>
                             </RequireAuth>
@@ -92,7 +110,7 @@ function App() {
                         path="/patient/progress"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['PATIENT']}>
+                                <RequireRole allowed={['PARTICIPANT']}>
                                     <MyProgress />
                                 </RequireRole>
                             </RequireAuth>
@@ -161,12 +179,12 @@ function App() {
                         }
                     />
 
-                    {/* ADMIN ROUTES */}
+                    {/* COORDINATOR ROUTES */}
                     <Route
                         path="/admin/dashboard"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['ADMIN']}>
+                                <RequireRole allowed={['COORDINATOR']}>
                                     <AdminDashboard />
                                 </RequireRole>
                             </RequireAuth>
@@ -176,7 +194,7 @@ function App() {
                         path="/admin/users"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['ADMIN']}>
+                                <RequireRole allowed={['COORDINATOR']}>
                                     <UserManagement />
                                 </RequireRole>
                             </RequireAuth>
@@ -186,7 +204,7 @@ function App() {
                         path="/admin/system"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['ADMIN']}>
+                                <RequireRole allowed={['COORDINATOR']}>
                                     <SystemOverview />
                                 </RequireRole>
                             </RequireAuth>
@@ -196,7 +214,7 @@ function App() {
                         path="/admin/approvals"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['ADMIN']}>
+                                <RequireRole allowed={['COORDINATOR']}>
                                     <Approvals />
                                 </RequireRole>
                             </RequireAuth>
@@ -206,17 +224,17 @@ function App() {
                         path="/admin/reports"
                         element={
                             <RequireAuth>
-                                <RequireRole allowed={['ADMIN']}>
+                                <RequireRole allowed={['COORDINATOR']}>
                                     <Reports />
                                 </RequireRole>
                             </RequireAuth>
                         }
                     />
 
-                    {/* Catch all - redirect to forbidden */}
-                    <Route path="*" element={<Navigate to="/forbidden" replace />} />
+                    {/* Catch all - redirect to login */}
+                    <Route path="*" element={<Navigate to="/login" replace />} />
                 </Routes>
-            </Container>
+            </AppLayout>
         </AuthProvider>
     );
 }

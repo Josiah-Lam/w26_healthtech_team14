@@ -8,7 +8,7 @@ import { useParams, Link } from 'react-router-dom';
 export default function PatientSession() {
     const { id } = useParams();
 
-    const [patients] = useState([
+    const [participants] = useState([
         { id: 1, name: 'John Doe', program: 'STEPS', date: 'Feb 10, 2026', time: '10:00 AM', notes: 'Mobility focus — bring tubing.' },
         { id: 2, name: 'Jane Smith', program: 'STEPS', date: 'Feb 10, 2026', time: '2:00 PM', notes: 'Cardiac monitoring required.' },
         { id: 3, name: 'Bob Johnson', program: 'Brain and Body', date: 'Feb 11, 2026', time: '9:00 AM', notes: 'Follow-up on home exercises.' },
@@ -20,10 +20,10 @@ export default function PatientSession() {
 
     return (
         <Container className="pt-4">
-            <h1 className="mb-4">Patient Session</h1>
+            <h1 className="mb-4">Participant Session</h1>
 
             <Accordion defaultActiveKey={activeKey}>
-                {patients.map((p) => (
+                {participants.map((p) => (
                     <Accordion.Item eventKey={String(p.id)} key={p.id}>
                         <Accordion.Header>{p.name}</Accordion.Header>
                         <Accordion.Body>

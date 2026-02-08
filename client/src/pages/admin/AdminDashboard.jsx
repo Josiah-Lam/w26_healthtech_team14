@@ -5,28 +5,28 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 /**
- * Admin Dashboard
- * Main dashboard for administrators with system overview
+ * Coordinator Dashboard
+ * Main dashboard for coordinators with system overview
  */
 export default function AdminDashboard() {
     const [stats, setStats] = useState({
         totalUsers: 156,
-        activePatients: 89,
+        activeParticipants: 89,
         volunteers: 23,
         pendingApprovals: 5,
         systemStatus: 'healthy'
     });
 
     useEffect(() => {
-        // Fetch admin stats from backend
+        // Fetch coordinator stats from backend
     }, []);
 
     return (
         <Container className="pt-4">
             <Row className="mb-5">
                 <Col xs={12}>
-                    <h1 className="mb-1">Admin Dashboard</h1>
-                    <p className="text-muted">System overview and administrative controls</p>
+                    <h1 className="mb-1">Coordinator Dashboard</h1>
+                    <p className="text-muted">System overview and coordination controls</p>
                 </Col>
             </Row>
 
@@ -43,8 +43,8 @@ export default function AdminDashboard() {
                 <Col md={6} lg={3} className="mb-4">
                     <Card className="stat-card">
                         <Card.Body>
-                            <h5 className="text-muted">Active Patients</h5>
-                            <h2 className="text-success">{stats.activePatients}</h2>
+                            <h5 className="text-muted">Active Participants</h5>
+                            <h2 className="text-success">{stats.activeParticipants}</h2>
                         </Card.Body>
                     </Card>
                 </Col>
