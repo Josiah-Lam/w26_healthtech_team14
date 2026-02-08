@@ -1,0 +1,48 @@
+.streak-tracker {
+    background: linear-gradient(135deg, #20c997 0%, #1fa878 100%);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    text-align: center;
+
+    .streak-content {
+        margin-bottom: 1rem;
+
+        .streak-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.9;
+        }
+
+        .streak-counter {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+
+            .streak-number {
+                font-size: 3rem;
+                font-weight: 700;
+                line-height: 1;
+            }
+
+            .streak-unit {
+                font-size: 1rem;
+                font-weight: 500;
+                opacity: 0.95;
+            }
+        }
+    }
+
+    .streak-message {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.4;
+        opacity: 0.95;
+    }
+}

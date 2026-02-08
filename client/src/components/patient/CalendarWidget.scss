@@ -1,0 +1,95 @@
+.calendar-widget {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    .calendar-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+
+        .month-year {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .nav-button {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: #20c997;
+            padding: 0.25rem 0.5rem;
+            transition: color 0.2s;
+
+            &:hover {
+                color: #1fa878;
+            }
+        }
+    }
+
+    .calendar-body {
+        .weekday-header {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+
+            .weekday-name {
+                text-align: center;
+                font-size: 0.75rem;
+                font-weight: 600;
+                color: #95a5a6;
+                text-transform: uppercase;
+            }
+        }
+
+        .calendar-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            .week {
+                display: grid;
+                grid-template-columns: repeat(7, 1fr);
+                gap: 0.5rem;
+            }
+
+            .calendar-day {
+                aspect-ratio: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                font-size: 0.875rem;
+                font-weight: 500;
+                color: #2c3e50;
+                background: #f8f9fa;
+                cursor: pointer;
+                transition: all 0.2s;
+
+                &:not(.empty) {
+                    &:hover {
+                        background: #e8f4f8;
+                    }
+                }
+
+                &.empty {
+                    background: transparent;
+                    cursor: default;
+                }
+
+                &.highlighted {
+                    background: #20c997;
+                    color: white;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}
